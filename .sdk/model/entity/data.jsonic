@@ -1,0 +1,96 @@
+# Entity: data
+
+main: kit: entity: data: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "byte"
+      req: true
+      type: "`$NUMBER`"
+    }
+    {
+      name: "cleaner_than"
+      req: true
+      type: "`$NUMBER`"
+    }
+    {
+      name: "gco2e"
+      req: true
+      type: "`$NUMBER`"
+    }
+    {
+      name: "green"
+      req: true
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "rating"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "statistic"
+      req: true
+      type: "`$OBJECT`"
+    }
+  ]
+
+  name: "data"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: 12345678
+                kind: "query"
+                name: "byte"
+                orig: "byte"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+              {
+                example: 1
+                kind: "query"
+                name: "green"
+                orig: "green"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "legacy"
+                orig: "legacy"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/data"
+          parts: [
+            "data"
+          ]
+          select: {
+            exist: [
+              "byte"
+              "green"
+              "legacy"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

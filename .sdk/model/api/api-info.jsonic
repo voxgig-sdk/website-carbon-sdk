@@ -1,0 +1,26 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "Wholegrain Digital"
+        url: "https://www.websitecarbon.com/"
+      }
+      description: "Calculates website carbon emissions per page view using real-time tests. Provides endpoints for testing and manual calculations to increase awareness and understanding of sustainability on the web."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://api.websitecarbon.com"
+        }
+      ]
+      termsOfService: "https://www.websitecarbon.com/"
+      title: "Website Carbon API"
+      version: "1.0.0"
+      "x-documentation": "https://api.websitecarbon.com/"
+    }
+  }
+}
+
+}

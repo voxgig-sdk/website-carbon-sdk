@@ -1,0 +1,256 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Website Carbon API",
+    "description": "Calculates website carbon emissions per page view using real-time tests. Provides endpoints for testing and manual calculations to increase awareness and understanding of sustainability on the web.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Wholegrain Digital",
+      "url": "https://www.websitecarbon.com/"
+    },
+    "termsOfService": "https://www.websitecarbon.com/",
+    "x-documentation": "https://api.websitecarbon.com/"
+  },
+  "servers": [
+    {
+      "url": "https://api.websitecarbon.com",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/data": {
+      "get": {
+        "summary": "Calculate emissions by bytes and green hosting",
+        "description": "Calculate the emissions of a page by manually passing the bytes and whether or not it is powered by green hosting. Returns carbon emissions data, rating, and statistics.",
+        "operationId": "calculateEmissions",
+        "parameters": [
+          {
+            "name": "bytes",
+            "in": "query",
+            "description": "The number of bytes transferred by the page on load",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "example": 12345678
+            }
+          },
+          {
+            "name": "green",
+            "in": "query",
+            "description": "Whether the site is using environmentally sustainable hosting. Use 1 for green hosting, 0 for non-green hosting",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ],
+              "example": 1
+            }
+          },
+          {
+            "name": "legacy",
+            "in": "query",
+            "description": "A flag to attempt to return the statistics object based on an outdated calculation model. Only affects the statistics object. Valid values are 2 (methodology up to 19 April 2022) or 3 (methodology up to July 2024)",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "enum": [
+                2,
+                3
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with carbon emissions calculation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EmissionsResponse"
+                },
+                "example": {
+                  "bytes": 12345678,
+                  "green": true,
+                  "gco2e": 1.0506427318758333,
+                  "rating": "F",
+                  "statistics": {
+                    "adjustedBytes": 9320986.89,
+                    "energy": 0.0026042536525055764,
+                    "co2": {
+                      "grid": {
+                        "grams": 1.2865013043377547,
+                        "litres": 0.7155520254726591
+                      },
+                      "renewable": {
+                        "grams": 1.0506427318758333,
+                        "litres": 0.5843674874693384
+                      }
+                    }
+                  },
+                  "cleanerThan": 0.07
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - missing or invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Emissions Calculation"
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "EmissionsResponse": {
+        "type": "object",
+        "required": [
+          "bytes",
+          "green",
+          "gco2e",
+          "rating",
+          "statistics",
+          "cleanerThan"
+        ],
+        "properties": {
+          "bytes": {
+            "type": "number",
+            "description": "Number of bytes you passed to the endpoint"
+          },
+          "green": {
+            "type": "boolean",
+            "description": "The green hosting flag you passed to the endpoint"
+          },
+          "gco2e": {
+            "type": "number",
+            "description": "The emissions in grams of CO2 equivalent"
+          },
+          "rating": {
+            "type": "string",
+            "description": "The Digital Carbon Rating",
+            "enum": [
+              "A+",
+              "A",
+              "B",
+              "C",
+              "D",
+              "E",
+              "F"
+            ]
+          },
+          "statistics": {
+            "$ref": "#/components/schemas/Statistics"
+          },
+          "cleanerThan": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "A numeric value between 0 and 1 representing the percentage of pages that this result's emissions are lower than. This is in comparison to average transfer size of pages from HTTP Archive"
+          }
+        }
+      },
+      "Statistics": {
+        "type": "object",
+        "description": "Statistics object containing detailed calculations. Note that the values in this object are mainly useful for considering different aspects of the emissions; the top level gco2e value is the most concise figure",
+        "required": [
+          "adjustedBytes",
+          "energy",
+          "co2"
+        ],
+        "properties": {
+          "adjustedBytes": {
+            "type": "number",
+            "description": "The data transfer of the page load adjusted to take returning visitor caching into account. Note that all calculated emissions (gCO2e values) have factored in returning visitor caching"
+          },
+          "energy": {
+            "type": "number",
+            "description": "The approximate amount of energy required for each page load in kWh"
+          },
+          "co2": {
+            "$ref": "#/components/schemas/CO2Data"
+          }
+        }
+      },
+      "CO2Data": {
+        "type": "object",
+        "description": "Object containing data relating to CO2 emissions from each page load. Provides both renewable and grid scenarios for reference. The top level emissions have been calculated based on the green hosting status",
+        "required": [
+          "grid",
+          "renewable"
+        ],
+        "properties": {
+          "grid": {
+            "$ref": "#/components/schemas/CO2Emissions",
+            "description": "CO2 emissions if energy is from the national grid"
+          },
+          "renewable": {
+            "$ref": "#/components/schemas/CO2Emissions",
+            "description": "CO2 emissions if energy is renewable"
+          }
+        }
+      },
+      "CO2Emissions": {
+        "type": "object",
+        "required": [
+          "grams",
+          "litres"
+        ],
+        "properties": {
+          "grams": {
+            "type": "number",
+            "description": "The approximate CO2 emissions from the page load in grams"
+          },
+          "litres": {
+            "type": "number",
+            "description": "The CO2 in grams converted to litres"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          },
+          "message": {
+            "type": "string",
+            "description": "Detailed error description"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Emissions Calculation",
+      "description": "Calculate carbon emissions for websites based on data transfer and hosting type"
+    }
+  ],
+  "externalDocs": {
+    "description": "Website Carbon Calculator - How does it work?",
+    "url": "https://www.websitecarbon.com/"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "existing": {
+    "data": {
+      "DATA00": {
+        "byte": 60,
+        "cleaner_than": 61,
+        "gco2e": 62,
+        "green": false,
+        "rating": "s40",
+        "statistic": {}
+      },
+      "DATA01": {
+        "byte": 120,
+        "cleaner_than": 121,
+        "gco2e": 122,
+        "green": false,
+        "rating": "s7c",
+        "statistic": {}
+      },
+      "DATA02": {
+        "byte": 180,
+        "cleaner_than": 181,
+        "gco2e": 182,
+        "green": false,
+        "rating": "sb8",
+        "statistic": {}
+      }
+    }
+  },
+  "new": {
+    "data": {
+      "data_ref01": {
+        "byte": 240,
+        "cleaner_than": 241,
+        "gco2e": 242,
+        "green": false,
+        "rating": "sf4",
+        "statistic": {}
+      }
+    }
+  }
+}
