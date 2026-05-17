@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/website-carbon-sdk"
-	"github.com/voxgig-sdk/website-carbon-sdk/core"
+	sdk "github.com/voxgig-sdk/website-carbon-sdk/go"
+	"github.com/voxgig-sdk/website-carbon-sdk/go/core"
 )
 
 func TestDataDirect(t *testing.T) {

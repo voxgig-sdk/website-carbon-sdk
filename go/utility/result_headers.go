@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/website-carbon-sdk/core"
+import "github.com/voxgig-sdk/website-carbon-sdk/go/core"
 
 func resultHeadersUtil(ctx *core.Context) *core.Result {
 	response := ctx.Response

@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/website-carbon-sdk"
-	"github.com/voxgig-sdk/website-carbon-sdk/core"
+	sdk "github.com/voxgig-sdk/website-carbon-sdk/go"
+	"github.com/voxgig-sdk/website-carbon-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/website-carbon-sdk/go/utility/struct"
 )
 
 func TestDataEntity(t *testing.T) {

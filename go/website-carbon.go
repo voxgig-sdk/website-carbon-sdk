@@ -1,10 +1,10 @@
 package voxgigwebsitecarbonsdk
 
 import (
-	"github.com/voxgig-sdk/website-carbon-sdk/core"
-	"github.com/voxgig-sdk/website-carbon-sdk/entity"
-	"github.com/voxgig-sdk/website-carbon-sdk/feature"
-	_ "github.com/voxgig-sdk/website-carbon-sdk/utility"
+	"github.com/voxgig-sdk/website-carbon-sdk/go/core"
+	"github.com/voxgig-sdk/website-carbon-sdk/go/entity"
+	"github.com/voxgig-sdk/website-carbon-sdk/go/feature"
+	_ "github.com/voxgig-sdk/website-carbon-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

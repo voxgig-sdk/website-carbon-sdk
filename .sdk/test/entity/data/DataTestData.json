@@ -7,7 +7,8 @@
         "gco2e": 62,
         "green": false,
         "rating": "s40",
-        "statistic": {}
+        "statistic": {},
+        "id": "DATA00"
       },
       "DATA01": {
         "byte": 120,
@@ -15,7 +16,8 @@
         "gco2e": 122,
         "green": false,
         "rating": "s7c",
-        "statistic": {}
+        "statistic": {},
+        "id": "DATA01"
       },
       "DATA02": {
         "byte": 180,
@@ -23,7 +25,8 @@
         "gco2e": 182,
         "green": false,
         "rating": "sb8",
-        "statistic": {}
+        "statistic": {},
+        "id": "DATA02"
       }
     }
   },

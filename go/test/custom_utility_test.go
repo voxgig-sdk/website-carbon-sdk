@@ -3,7 +3,7 @@ package sdktest
 import (
 	"testing"
 
-	sdk "github.com/voxgig-sdk/website-carbon-sdk"
+	sdk "github.com/voxgig-sdk/website-carbon-sdk/go"
 )
 
 func TestCustomUtility(t *testing.T) {
