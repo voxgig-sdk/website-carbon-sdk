@@ -31,9 +31,7 @@ loading a specific record.
 ```ruby
 require_relative "WebsiteCarbon_sdk"
 
-client = WebsiteCarbonSDK.new({
-  "apikey" => ENV["WEBSITE-CARBON_APIKEY"],
-})
+client = WebsiteCarbonSDK.new({})
 ```
 
 ### 3. Load a data
@@ -121,7 +119,6 @@ Create a `.env.local` file at the project root:
 
 ```
 WEBSITE-CARBON_TEST_LIVE=TRUE
-WEBSITE-CARBON_APIKEY=<your-key>
 ```
 
 Then run:
@@ -144,7 +141,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `String` | API key for authentication. |
 | `base` | `String` | Base URL of the API server. |
 | `prefix` | `String` | URL path prefix prepended to all requests. |
 | `suffix` | `String` | URL path suffix appended to all requests. |

@@ -79,14 +79,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'WEBSITECARBON_TEST_DATA_ENTID': {},
     'WEBSITECARBON_TEST_LIVE': 'FALSE',
-    'WEBSITECARBON_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.WEBSITECARBON_TEST_LIVE
 
   if (live) {
     const client = new WebsiteCarbonSDK({
-      apikey: env.WEBSITECARBON_APIKEY,
     })
 
     let idmap: any = env['WEBSITECARBON_TEST_DATA_ENTID']

@@ -106,14 +106,12 @@ func dataDirectSetup(mockres any) *dataDirectSetupResult {
 	env := envOverride(map[string]any{
 		"WEBSITECARBON_TEST_DATA_ENTID": map[string]any{},
 		"WEBSITECARBON_TEST_LIVE":    "FALSE",
-		"WEBSITECARBON_APIKEY":       "NONE",
 	})
 
 	live := env["WEBSITECARBON_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["WEBSITECARBON_APIKEY"],
 		}
 		client := sdk.NewWebsiteCarbonSDK(mergedOpts)
 

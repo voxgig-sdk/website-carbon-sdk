@@ -117,7 +117,6 @@ func dataBasicSetup(extra map[string]any) *entityTestSetup {
 		"WEBSITECARBON_TEST_DATA_ENTID": idmap,
 		"WEBSITECARBON_TEST_LIVE":      "FALSE",
 		"WEBSITECARBON_TEST_EXPLAIN":   "FALSE",
-		"WEBSITECARBON_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["WEBSITECARBON_TEST_DATA_ENTID"])
@@ -128,7 +127,6 @@ func dataBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["WEBSITECARBON_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["WEBSITECARBON_APIKEY"],
 			},
 			extra,
 		})
