@@ -10,7 +10,7 @@ The TypeScript SDK for the WebsiteCarbon API — a type-safe, entity-oriented cl
 
 ## Install
 ```bash
-npm install website-carbon
+npm install @voxgig-sdk/website-carbon
 ```
 ## Tutorial: your first API call
 

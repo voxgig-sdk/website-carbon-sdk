@@ -10,13 +10,13 @@ The Ruby SDK for the WebsiteCarbon API — an entity-oriented client using idiom
 
 ## Install
 ```bash
-gem install website-carbon-sdk
+gem install voxgig-sdk-website-carbon
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "website-carbon-sdk"
+gem "voxgig-sdk-website-carbon"
 ```
 
 Then run:

@@ -10,7 +10,7 @@ The Python SDK for the WebsiteCarbon API — an entity-oriented client following
 
 ## Install
 ```bash
-pip install website-carbon-sdk
+pip install voxgig-sdk-website-carbon
 ```
 
 Or install from source:

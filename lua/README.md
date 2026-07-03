@@ -10,7 +10,7 @@ The Lua SDK for the WebsiteCarbon API — an entity-oriented client using Lua co
 
 ## Install
 ```bash
-luarocks install website-carbon-sdk
+luarocks install voxgig-sdk-website-carbon
 ```
 
 If the module is not yet published, add the source directory to
