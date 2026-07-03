@@ -65,12 +65,14 @@ def _data_direct_setup(mockres):
     env = runner.env_override({
         "WEBSITECARBON_TEST_DATA_ENTID": {},
         "WEBSITECARBON_TEST_LIVE": "FALSE",
+        "WEBSITECARBON_APIKEY": "NONE",
     })
 
     live = env.get("WEBSITECARBON_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("WEBSITECARBON_APIKEY"),
         }
         client = WebsiteCarbonSDK(merged_opts)
         return {

@@ -74,12 +74,14 @@ function data_direct_setup($mockres)
     $env = Runner::env_override([
         "WEBSITECARBON_TEST_DATA_ENTID" => [],
         "WEBSITECARBON_TEST_LIVE" => "FALSE",
+        "WEBSITECARBON_APIKEY" => "NONE",
     ]);
 
     $live = $env["WEBSITECARBON_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
+            "apikey" => $env["WEBSITECARBON_APIKEY"],
         ];
         $client = new WebsiteCarbonSDK($merged_opts);
         return [

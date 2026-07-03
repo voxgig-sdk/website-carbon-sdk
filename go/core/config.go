@@ -14,6 +14,9 @@ func MakeConfig() map[string]any {
 		},
 		"options": map[string]any{
 			"base": "https://api.websitecarbon.com",
+			"auth": map[string]any{
+				"prefix": "Bearer",
+			},
 			"headers": map[string]any{
 				"content-type": "application/json",
 			},
@@ -25,81 +28,83 @@ func MakeConfig() map[string]any {
 			"data": map[string]any{
 				"fields": []any{
 					map[string]any{
+						"active": true,
 						"name": "byte",
 						"req": true,
 						"type": "`$NUMBER`",
-						"active": true,
 						"index$": 0,
 					},
 					map[string]any{
+						"active": true,
 						"name": "cleaner_than",
 						"req": true,
 						"type": "`$NUMBER`",
-						"active": true,
 						"index$": 1,
 					},
 					map[string]any{
+						"active": true,
 						"name": "gco2e",
 						"req": true,
 						"type": "`$NUMBER`",
-						"active": true,
 						"index$": 2,
 					},
 					map[string]any{
+						"active": true,
 						"name": "green",
 						"req": true,
 						"type": "`$BOOLEAN`",
-						"active": true,
 						"index$": 3,
 					},
 					map[string]any{
+						"active": true,
 						"name": "rating",
 						"req": true,
 						"type": "`$STRING`",
-						"active": true,
 						"index$": 4,
 					},
 					map[string]any{
+						"active": true,
 						"name": "statistic",
 						"req": true,
 						"type": "`$OBJECT`",
-						"active": true,
 						"index$": 5,
 					},
 				},
 				"name": "data",
 				"op": map[string]any{
 					"load": map[string]any{
+						"input": "data",
 						"name": "load",
 						"points": []any{
 							map[string]any{
+								"active": true,
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
+											"active": true,
 											"example": 12345678,
 											"kind": "query",
 											"name": "byte",
 											"orig": "byte",
 											"reqd": true,
 											"type": "`$INTEGER`",
-											"active": true,
 										},
 										map[string]any{
+											"active": true,
 											"example": 1,
 											"kind": "query",
 											"name": "green",
 											"orig": "green",
 											"reqd": true,
 											"type": "`$INTEGER`",
-											"active": true,
 										},
 										map[string]any{
+											"active": true,
 											"kind": "query",
 											"name": "legacy",
 											"orig": "legacy",
 											"reqd": false,
 											"type": "`$INTEGER`",
-											"active": true,
 										},
 									},
 								},
@@ -119,11 +124,9 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"active": true,
 								"index$": 0,
 							},
 						},
-						"input": "data",
 						"key$": "load",
 					},
 				},

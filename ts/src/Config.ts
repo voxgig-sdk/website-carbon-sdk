@@ -38,6 +38,10 @@ class Config {
   options = {
     base: 'https://api.websitecarbon.com',
 
+    auth: {
+      prefix: 'Bearer',
+    },
+
     headers: {
       "content-type": "application/json"
     },
@@ -55,81 +59,83 @@ class Config {
     "data": {
       "fields": [
         {
+          "active": true,
           "name": "byte",
           "req": true,
           "type": "`$NUMBER`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "cleaner_than",
           "req": true,
           "type": "`$NUMBER`",
-          "active": true,
           "index$": 1
         },
         {
+          "active": true,
           "name": "gco2e",
           "req": true,
           "type": "`$NUMBER`",
-          "active": true,
           "index$": 2
         },
         {
+          "active": true,
           "name": "green",
           "req": true,
           "type": "`$BOOLEAN`",
-          "active": true,
           "index$": 3
         },
         {
+          "active": true,
           "name": "rating",
           "req": true,
           "type": "`$STRING`",
-          "active": true,
           "index$": 4
         },
         {
+          "active": true,
           "name": "statistic",
           "req": true,
           "type": "`$OBJECT`",
-          "active": true,
           "index$": 5
         }
       ],
       "name": "data",
       "op": {
         "load": {
+          "input": "data",
           "name": "load",
           "points": [
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "example": 12345678,
                     "kind": "query",
                     "name": "byte",
                     "orig": "byte",
                     "reqd": true,
-                    "type": "`$INTEGER`",
-                    "active": true
+                    "type": "`$INTEGER`"
                   },
                   {
+                    "active": true,
                     "example": 1,
                     "kind": "query",
                     "name": "green",
                     "orig": "green",
                     "reqd": true,
-                    "type": "`$INTEGER`",
-                    "active": true
+                    "type": "`$INTEGER`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "legacy",
                     "orig": "legacy",
                     "reqd": false,
-                    "type": "`$INTEGER`",
-                    "active": true
+                    "type": "`$INTEGER`"
                   }
                 ]
               },
@@ -149,11 +155,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "load"
         }
       },

@@ -113,6 +113,7 @@ function basicSetup(extra?: any) {
     'WEBSITE_CARBON_TEST_DATA_ENTID': idmap,
     'WEBSITE_CARBON_TEST_LIVE': 'FALSE',
     'WEBSITE_CARBON_TEST_EXPLAIN': 'FALSE',
+    'WEBSITE_CARBON_APIKEY': 'NONE',
   })
 
   idmap = env['WEBSITE_CARBON_TEST_DATA_ENTID']
@@ -122,6 +123,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new WebsiteCarbonSDK(merge([
       {
+        apikey: env.WEBSITE_CARBON_APIKEY,
       },
       extra
     ]))

@@ -15,6 +15,9 @@ def make_config():
         },
         "options": {
             "base": "https://api.websitecarbon.com",
+            "auth": {
+                "prefix": "Bearer",
+            },
             "headers": {
         "content-type": "application/json",
       },
@@ -26,81 +29,83 @@ def make_config():
       "data": {
         "fields": [
           {
+            "active": True,
             "name": "byte",
             "req": True,
             "type": "`$NUMBER`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "cleaner_than",
             "req": True,
             "type": "`$NUMBER`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "gco2e",
             "req": True,
             "type": "`$NUMBER`",
-            "active": True,
             "index$": 2,
           },
           {
+            "active": True,
             "name": "green",
             "req": True,
             "type": "`$BOOLEAN`",
-            "active": True,
             "index$": 3,
           },
           {
+            "active": True,
             "name": "rating",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 4,
           },
           {
+            "active": True,
             "name": "statistic",
             "req": True,
             "type": "`$OBJECT`",
-            "active": True,
             "index$": 5,
           },
         ],
         "name": "data",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "query": [
                     {
+                      "active": True,
                       "example": 12345678,
                       "kind": "query",
                       "name": "byte",
                       "orig": "byte",
                       "reqd": True,
                       "type": "`$INTEGER`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": 1,
                       "kind": "query",
                       "name": "green",
                       "orig": "green",
                       "reqd": True,
                       "type": "`$INTEGER`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "kind": "query",
                       "name": "legacy",
                       "orig": "legacy",
                       "reqd": False,
                       "type": "`$INTEGER`",
-                      "active": True,
                     },
                   ],
                 },
@@ -120,11 +125,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },

@@ -1,19 +1,8 @@
 # WebsiteCarbon SDK
 
-Estimate the carbon emissions produced by a single page view of any URL
+Website Carbon API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Website Carbon API
-
-[Website Carbon](https://www.websitecarbon.com/) runs a public HTTP API that estimates the carbon footprint of a web page. Given a URL, it performs a real-time test of the page and returns an estimate of the carbon emissions generated per page view, based on transferred bytes and assumptions about the energy mix used to deliver and render the page.
-
-What you get from the API:
-
-- A `GET /site?url={website_url}` endpoint that runs a fresh test against the supplied URL.
-- A carbon estimate per page view derived from the measured page weight.
-
-The API is served from `https://api.websitecarbon.com` and, per the freepublicapis.com listing, is reachable without an API key. Rate limits, CORS policy, and quotas are not documented on the catalogue page, so treat the service as best-effort and avoid hammering it from client-side code.
 
 ## Try it
 
@@ -47,27 +36,31 @@ gem install website-carbon-sdk
 luarocks install website-carbon-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { WebsiteCarbonSDK } from 'website-carbon'
 
-const client = new WebsiteCarbonSDK({})
+const client = new WebsiteCarbonSDK({
+  apikey: process.env.WEBSITE-CARBON_APIKEY,
+})
 
+// Load data data
+const data = await client.Data().load({})
+console.log(data.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -97,7 +90,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Data** | Carbon-estimate results for a tested URL, returned by `GET /site?url={website_url}`. | `/data` |
+| **Data** |  | `/data` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -107,15 +100,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from websitecarbon_sdk import WebsiteCarbonSDK
 
-client = WebsiteCarbonSDK({})
+client = WebsiteCarbonSDK({
+    "apikey": os.environ.get("WEBSITE-CARBON_APIKEY"),
+})
 
 
 # Load a specific data
-data, err = client.Data(None).load(
-    {"id": "example_id"}, None
-)
+data, err = client.Data().load({"id": "example_id"})
+print(data)
 ```
 
 ### PHP
@@ -124,13 +119,14 @@ data, err = client.Data(None).load(
 <?php
 require_once 'websitecarbon_sdk.php';
 
-$client = new WebsiteCarbonSDK([]);
+$client = new WebsiteCarbonSDK([
+    "apikey" => getenv("WEBSITE-CARBON_APIKEY"),
+]);
 
 
 // Load a specific data
-[$data, $err] = $client->Data(null)->load(
-    ["id" => "example_id"], null
-);
+[$data, $err] = $client->Data()->load(["id" => "example_id"]);
+print_r($data);
 ```
 
 ### Golang
@@ -138,8 +134,13 @@ $client = new WebsiteCarbonSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/website-carbon-sdk/go"
 
-client := sdk.NewWebsiteCarbonSDK(map[string]any{})
+client := sdk.NewWebsiteCarbonSDK(map[string]any{
+    "apikey": os.Getenv("WEBSITE-CARBON_APIKEY"),
+})
 
+// Load data data
+data, err := client.Data(nil).Load(map[string]any{}, nil)
+fmt.Println(data)
 ```
 
 ### Ruby
@@ -147,13 +148,14 @@ client := sdk.NewWebsiteCarbonSDK(map[string]any{})
 ```ruby
 require_relative "WebsiteCarbon_sdk"
 
-client = WebsiteCarbonSDK.new({})
+client = WebsiteCarbonSDK.new({
+  "apikey" => ENV["WEBSITE-CARBON_APIKEY"],
+})
 
 
 # Load a specific data
-data, err = client.Data(nil).load(
-  { "id" => "example_id" }, nil
-)
+data, err = client.Data().load({ "id" => "example_id" })
+puts data
 ```
 
 ### Lua
@@ -161,13 +163,14 @@ data, err = client.Data(nil).load(
 ```lua
 local sdk = require("website-carbon_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("WEBSITE-CARBON_APIKEY"),
+})
 
 
 -- Load a specific data
-local data, err = client:Data(nil):load(
-  { id = "example_id" }, nil
-)
+local data, err = client:Data():load({ id = "example_id" })
+print(data)
 ```
 
 ## Unit testing in offline mode
@@ -186,25 +189,21 @@ const result = await client.Data().load({ id: 'test01' })
 ### Python
 
 ```python
-client = WebsiteCarbonSDK.test(None, None)
-result, err = client.Data(None).load(
-    {"id": "test01"}, None
-)
+client = WebsiteCarbonSDK.test()
+result, err = client.Data().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = WebsiteCarbonSDK::test(null, null);
-[$result, $err] = $client->Data(null)->load(
-    ["id" => "test01"], null
-);
+$client = WebsiteCarbonSDK::test();
+[$result, $err] = $client->Data()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Data(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -213,19 +212,15 @@ result, err := client.Data(nil).Load(
 ### Ruby
 
 ```ruby
-client = WebsiteCarbonSDK.test(nil, nil)
-result, err = client.Data(nil).load(
-  { "id" => "test01" }, nil
-)
+client = WebsiteCarbonSDK.test
+result, err = client.Data().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Data(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Data():load({ id = "test01" })
 ```
 
 ## How it works
@@ -329,11 +324,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Website Carbon API
-
-- Upstream: [https://www.websitecarbon.com/](https://www.websitecarbon.com/)
-- API docs: [https://www.websitecarbon.com/api/](https://www.websitecarbon.com/api/)
 
 ---
 
