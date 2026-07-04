@@ -33,10 +33,12 @@ client = WebsiteCarbonSDK()
 
 ### 3. Load a data
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.data.load({"id": "example_id"})
-    print(result)
+    data = client.Data().load({"id": "example_id"})
+    print(data)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -84,8 +86,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = WebsiteCarbonSDK.test()
 
-result = client.data.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+data = client.Data().load({"id": "test01"})
+# data contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -223,7 +226,7 @@ API path: `/data`
 
 ### Data
 
-Create an instance: `const data = client.data`
+Create an instance: `data = client.Data()`
 
 #### Operations
 
@@ -244,8 +247,8 @@ Create an instance: `const data = client.data`
 
 #### Example: Load
 
-```ts
-const data = await client.data.load({ id: 'data_id' })
+```python
+data = client.Data().load({"id": "data_id"})
 ```
 
 
@@ -319,7 +322,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-data = client.data
+data = client.Data()
 data.load({"id": "example_id"})
 
 # data.data_get() now returns the loaded data data

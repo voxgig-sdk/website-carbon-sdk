@@ -220,25 +220,15 @@ class WebsiteCarbonSDK:
         }
 
 
-    @property
-    def data(self):
-        """Idiomatic facade: client.data.list() / client.data.load({"id": ...})."""
-        from entity.data_entity import DataEntity
-        cached = getattr(self, "_data", None)
-        if cached is None:
-            cached = DataEntity(self, None)
-            self._data = cached
-        return cached
-
-    def Data(self, data=None):
-        # Deprecated: use client.data instead.
+    def Data(self, data=None) -> "DataEntity":
+        """Entity factory: client.Data().list({}) / client.Data().load({"id": ...})."""
         from entity.data_entity import DataEntity
         return DataEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "WebsiteCarbonSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -258,3 +248,9 @@ class WebsiteCarbonSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.data_entity import DataEntity

@@ -109,7 +109,7 @@ Alias for `WebsiteCarbonSDK.test()`.
 ## DataEntity
 
 ```ts
-const data = client.data
+const data = client.Data()
 ```
 
 ### Fields
@@ -130,7 +130,7 @@ const data = client.data
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.data.load({ id: 'data_id' })
+const result = await client.Data().load({ id: 'data_id' })
 ```
 
 ### Common Methods

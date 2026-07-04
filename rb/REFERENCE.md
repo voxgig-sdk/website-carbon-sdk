@@ -86,7 +86,7 @@ same parameters as `direct()`. Raises on error.
 ## DataEntity
 
 ```ruby
-data = client.data
+data = client.Data
 ```
 
 ### Fields
@@ -107,7 +107,7 @@ data = client.data
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.data.load({ "id" => "data_id" })
+result = client.Data.load({ "id" => "data_id" })
 ```
 
 ### Common Methods

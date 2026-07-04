@@ -26,9 +26,9 @@ import { WebsiteCarbonSDK } from '@voxgig-sdk/website-carbon'
 
 const client = new WebsiteCarbonSDK()
 
-// Load data data
-const data = await client.data.load({})
-console.log(data.data)
+// Load data data (returns a Data)
+const data = await client.Data().load()
+console.log(data)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -84,8 +84,8 @@ from websitecarbon_sdk import WebsiteCarbonSDK
 client = WebsiteCarbonSDK()
 
 
-# Load a specific data
-data = client.data.load({"id": "example_id"})
+# Load a specific data (returns the record, raises on error)
+data = client.Data().load({"id": "example_id"})
 print(data)
 ```
 
@@ -98,8 +98,8 @@ require_once 'websitecarbon_sdk.php';
 $client = new WebsiteCarbonSDK();
 
 
-// Load a specific data
-$data = $client->data()->load(["id" => "example_id"]);
+// Load a specific data (returns the bare record; throws on error)
+$data = $client->Data()->load(["id" => "example_id"]);
 print_r($data);
 ```
 
@@ -123,8 +123,8 @@ require_relative "WebsiteCarbon_sdk"
 client = WebsiteCarbonSDK.new
 
 
-# Load a specific data
-data = client.data.load({ "id" => "example_id" })
+# Load a specific data (returns the bare record; raises on error)
+data = client.Data.load({ "id" => "example_id" })
 puts data
 ```
 
@@ -137,7 +137,7 @@ local client = sdk.new()
 
 
 -- Load a specific data
-local data, err = client:data():load({ id = "example_id" })
+local data, err = client:Data():load({ id = "example_id" })
 print(data)
 ```
 
@@ -150,22 +150,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = WebsiteCarbonSDK.test()
-const result = await client.data.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const data = await client.Data().load({ id: 'test01' })
+// data is a bare Data populated with mock data
+console.log(data)
 ```
 
 ### Python
 
 ```python
 client = WebsiteCarbonSDK.test()
-result = client.data.load({"id": "test01"})
+data = client.Data().load({"id": "test01"})
+print(data)
 ```
 
 ### PHP
 
 ```php
-$client = WebsiteCarbonSDK::test();
-$result = $client->data()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = WebsiteCarbonSDK::test([
+    "entity" => ["data" => ["test01" => ["id" => "test01"]]],
+]);
+$data = $client->Data()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -180,15 +185,18 @@ result, err := client.Data(nil).Load(
 ### Ruby
 
 ```ruby
-client = WebsiteCarbonSDK.test
-result = client.data.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = WebsiteCarbonSDK.test({
+  "entity" => { "data" => { "test01" => { "id" => "test01" } } },
+})
+data = client.Data.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:data():load({ id = "test01" })
+local result, err = client:Data():load({ id = "test01" })
 ```
 
 ## How it works
@@ -236,6 +244,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

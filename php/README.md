@@ -33,9 +33,10 @@ $client = new WebsiteCarbonSDK();
 
 ```php
 try {
-    $result = $client->data()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Data record (throws on error).
+    $data = $client->Data()->load(["id" => "example_id"]);
+    print_r($data);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -81,13 +82,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = WebsiteCarbonSDK::test();
+$client = WebsiteCarbonSDK::test([
+    "entity" => ["data" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->data()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$data = $client->Data()->load(["id" => "test01"]);
+print_r($data);
 ```
 
 ### Use a custom fetch function
@@ -228,7 +233,7 @@ API path: `/data`
 
 ### Data
 
-Create an instance: `const data = client.data`
+Create an instance: `$data = $client->Data();`
 
 #### Operations
 
@@ -249,8 +254,9 @@ Create an instance: `const data = client.data`
 
 #### Example: Load
 
-```ts
-const data = await client.data.load({ id: 'data_id' })
+```php
+// load() returns the bare Data record (throws on error).
+$data = $client->Data()->load(["id" => "data_id"]);
 ```
 
 
@@ -325,7 +331,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$data = $client->data();
+$data = $client->Data();
 $data->load(["id" => "example_id"]);
 
 // $data->dataGet() now returns the loaded data data

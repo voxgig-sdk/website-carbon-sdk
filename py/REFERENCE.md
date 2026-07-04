@@ -80,7 +80,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## DataEntity
 
 ```python
-data = client.data
+data = client.Data()
 ```
 
 ### Fields
@@ -101,7 +101,7 @@ data = client.data
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.data.load({"id": "data_id"})
+result = client.Data().load({"id": "data_id"})
 ```
 
 ### Common Methods

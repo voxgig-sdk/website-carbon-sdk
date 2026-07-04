@@ -83,7 +83,7 @@ same parameters as `direct()`.
 ## DataEntity
 
 ```lua
-local data = client:data(nil)
+local data = client:Data(nil)
 ```
 
 ### Fields
@@ -104,7 +104,7 @@ local data = client:data(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:data():load({ id = "data_id" })
+local result, err = client:Data():load({ id = "data_id" })
 ```
 
 ### Common Methods

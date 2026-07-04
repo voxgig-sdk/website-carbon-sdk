@@ -208,13 +208,7 @@ class WebsiteCarbonSDK
   end
 
 
-  # Idiomatic facade: client.data.list / client.data.load({ "id" => ... })
-  def data
-    require_relative 'entity/data_entity'
-    @data ||= DataEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.data instead.
+  # Canonical facade: client.Data.list / client.Data.load({ "id" => ... })
   def Data(data = nil)
     require_relative 'entity/data_entity'
     DataEntity.new(self, data)

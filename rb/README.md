@@ -32,8 +32,9 @@ client = WebsiteCarbonSDK.new
 
 ```ruby
 begin
-  result = client.data.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Data record (raises on error).
+  data = client.Data.load({ "id" => "example_id" })
+  puts data
 rescue => err
   warn "load failed: #{err}"
 end
@@ -80,13 +81,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = WebsiteCarbonSDK.test
+client = WebsiteCarbonSDK.test({
+  "entity" => { "data" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.data.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+data = client.Data.load({ "id" => "test01" })
+puts data
 ```
 
 ### Use a custom fetch function
@@ -223,7 +228,7 @@ API path: `/data`
 
 ### Data
 
-Create an instance: `const data = client.data`
+Create an instance: `data = client.Data`
 
 #### Operations
 
@@ -244,8 +249,9 @@ Create an instance: `const data = client.data`
 
 #### Example: Load
 
-```ts
-const data = await client.data.load({ id: 'data_id' })
+```ruby
+# load returns the bare Data record (raises on error).
+data = client.Data.load({ "id" => "data_id" })
 ```
 
 
@@ -320,7 +326,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-data = client.data
+data = client.Data
 data.load({ "id" => "example_id" })
 
 # data.data_get now returns the loaded data data
