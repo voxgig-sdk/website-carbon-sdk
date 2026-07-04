@@ -2,6 +2,8 @@
 
 import { DataEntity } from './entity/DataEntity'
 
+export type * from './WebsiteCarbonTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -202,6 +204,14 @@ class WebsiteCarbonSDK {
 
 
 
+  _data?: DataEntity
+
+  // Idiomatic facade: `client.data.list()` / `client.data.load({ id })`.
+  get data(): DataEntity {
+    return (this._data ??= new DataEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.data` instead. */
   Data(data?: any) {
     const self = this
     return new DataEntity(self,data)

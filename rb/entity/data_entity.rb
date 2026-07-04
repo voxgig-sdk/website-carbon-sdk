@@ -45,6 +45,7 @@ class DataEntity
     end
   end
 
+  # @return [Data, Hash] the current Data data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class DataEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Data fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Data.
+  #
+  # @param reqmatch [DataLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Data, Hash] the loaded Data; raises WebsiteCarbonError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

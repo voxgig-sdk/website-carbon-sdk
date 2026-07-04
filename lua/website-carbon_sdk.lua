@@ -244,6 +244,19 @@ end
 
 
 
+-- Idiomatic facade: client:data():list() / client:data():load({ id = ... })
+function WebsiteCarbonSDK:data(data)
+  local EntityMod = require("entity.data_entity")
+  if data == nil then
+    if self._data == nil then
+      self._data = EntityMod.new(self, nil)
+    end
+    return self._data
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:data() instead.
 function WebsiteCarbonSDK:Data(data)
   local EntityMod = require("entity.data_entity")
   return EntityMod.new(self, data)

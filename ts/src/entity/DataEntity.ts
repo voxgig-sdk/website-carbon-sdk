@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Data,
+  DataLoadMatch,
+} from '../WebsiteCarbonTypes'
 
 // TODO: needs Entity superclass
-class DataEntity extends WebsiteCarbonEntityBase {
+class DataEntity extends WebsiteCarbonEntityBase<Data> {
 
   constructor(client: WebsiteCarbonSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class DataEntity extends WebsiteCarbonEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: DataLoadMatch, ctrl?: Control): Promise<Data> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class DataEntity extends WebsiteCarbonEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Data> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

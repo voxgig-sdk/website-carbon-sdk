@@ -49,8 +49,7 @@ class DataEntityTest extends TestCase
         // LOAD
         $data_ref01_ent = $client->Data(null);
         $data_ref01_match_dt0 = [];
-        [$data_ref01_data_dt0_loaded, $err] = $data_ref01_ent->load($data_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $data_ref01_data_dt0_loaded = $data_ref01_ent->load($data_ref01_match_dt0, null);
         $this->assertNotNull($data_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function data_basic_setup($extra)
         "WEBSITECARBON_TEST_DATA_ENTID" => $idmap,
         "WEBSITECARBON_TEST_LIVE" => "FALSE",
         "WEBSITECARBON_TEST_EXPLAIN" => "FALSE",
-        "WEBSITECARBON_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function data_basic_setup($extra)
     if ($env["WEBSITECARBON_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["WEBSITECARBON_APIKEY"],
             ],
             $extra ?? [],
         ]);

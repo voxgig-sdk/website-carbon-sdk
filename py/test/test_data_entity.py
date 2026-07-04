@@ -49,8 +49,7 @@ class TestDataEntity:
         # LOAD
         data_ref01_ent = client.Data(None)
         data_ref01_match_dt0 = {}
-        data_ref01_data_dt0_loaded, err = data_ref01_ent.load(data_ref01_match_dt0, None)
-        assert err is None
+        data_ref01_data_dt0_loaded = data_ref01_ent.load(data_ref01_match_dt0, None)
         assert data_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _data_basic_setup(extra):
         "WEBSITECARBON_TEST_DATA_ENTID": idmap,
         "WEBSITECARBON_TEST_LIVE": "FALSE",
         "WEBSITECARBON_TEST_EXPLAIN": "FALSE",
-        "WEBSITECARBON_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _data_basic_setup(extra):
     if env.get("WEBSITECARBON_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("WEBSITECARBON_APIKEY"),
             },
             extra or {},
         ])

@@ -69,14 +69,12 @@ function data_direct_setup(mockres)
   local env = runner.env_override({
     ["WEBSITECARBON_TEST_DATA_ENTID"] = {},
     ["WEBSITECARBON_TEST_LIVE"] = "FALSE",
-    ["WEBSITECARBON_APIKEY"] = "NONE",
   })
 
   local live = env["WEBSITECARBON_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["WEBSITECARBON_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

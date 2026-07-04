@@ -20,9 +20,6 @@ class WebsiteCarbonConfig
             ],
             "options" => [
                 "base" => "https://api.websitecarbon.com",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],
