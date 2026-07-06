@@ -97,12 +97,12 @@ data := client.Data(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `byte` | ``$NUMBER`` | Yes |  |
-| `cleaner_than` | ``$NUMBER`` | Yes |  |
-| `gco2e` | ``$NUMBER`` | Yes |  |
-| `green` | ``$BOOLEAN`` | Yes |  |
-| `rating` | ``$STRING`` | Yes |  |
-| `statistic` | ``$OBJECT`` | Yes |  |
+| `byte` | `float64` | Yes |  |
+| `cleaner_than` | `float64` | Yes |  |
+| `gco2e` | `float64` | Yes |  |
+| `green` | `bool` | Yes |  |
+| `rating` | `string` | Yes |  |
+| `statistic` | `map[string]any` | Yes |  |
 
 ### Operations
 
@@ -111,7 +111,7 @@ data := client.Data(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Data(nil).Load(map[string]any{"id": "data_id"}, nil)
+result, err := client.Data(nil).Load(nil, nil)
 ```
 
 ### Common Methods

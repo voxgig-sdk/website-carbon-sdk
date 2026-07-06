@@ -8,7 +8,7 @@ Complete API reference for the WebsiteCarbon Python SDK.
 ### Constructor
 
 ```python
-from website-carbon_sdk import WebsiteCarbonSDK
+from websitecarbon_sdk import WebsiteCarbonSDK
 
 client = WebsiteCarbonSDK(options)
 ```
@@ -87,12 +87,12 @@ data = client.Data()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `byte` | ``$NUMBER`` | Yes |  |
-| `cleaner_than` | ``$NUMBER`` | Yes |  |
-| `gco2e` | ``$NUMBER`` | Yes |  |
-| `green` | ``$BOOLEAN`` | Yes |  |
-| `rating` | ``$STRING`` | Yes |  |
-| `statistic` | ``$OBJECT`` | Yes |  |
+| `byte` | `float` | Yes |  |
+| `cleaner_than` | `float` | Yes |  |
+| `gco2e` | `float` | Yes |  |
+| `green` | `bool` | Yes |  |
+| `rating` | `str` | Yes |  |
+| `statistic` | `dict` | Yes |  |
 
 ### Operations
 
@@ -101,7 +101,7 @@ data = client.Data()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Data().load({"id": "data_id"})
+result = client.Data().load()
 ```
 
 ### Common Methods

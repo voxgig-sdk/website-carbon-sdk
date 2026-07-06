@@ -221,7 +221,7 @@ class WebsiteCarbonSDK:
 
 
     def Data(self, data=None) -> "DataEntity":
-        """Entity factory: client.Data().list({}) / client.Data().load({"id": ...})."""
+        """Entity factory: client.Data().list() / client.Data().load({"id": ...})."""
         from entity.data_entity import DataEntity
         return DataEntity(self, data)
 

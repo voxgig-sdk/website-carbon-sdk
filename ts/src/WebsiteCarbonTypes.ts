@@ -14,5 +14,12 @@ export interface Data {
   statistic: Record<string, any>
 }
 
-export type DataLoadMatch = Partial<Data>
+export interface DataLoadMatch {
+  byte?: number
+  cleaner_than?: number
+  gco2e?: number
+  green?: boolean
+  rating?: string
+  statistic?: Record<string, any>
+}
 

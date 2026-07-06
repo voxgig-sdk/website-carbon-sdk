@@ -15,6 +15,12 @@
 ---@field statistic table
 
 ---@class DataLoadMatch
+---@field byte? number
+---@field cleaner_than? number
+---@field gco2e? number
+---@field green? boolean
+---@field rating? string
+---@field statistic? table
 
 local M = {}
 

@@ -8,7 +8,7 @@ Complete API reference for the WebsiteCarbon PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/website-carbon_sdk.php';
+require_once __DIR__ . '/websitecarbon_sdk.php';
 
 $client = new WebsiteCarbonSDK($options);
 ```
@@ -45,11 +45,11 @@ $client = WebsiteCarbonSDK::test();
 
 Create a new `DataEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): WebsiteCarbonUtility`
 
 Return a copy of the SDK utility object.
 
@@ -92,12 +92,12 @@ $data = $client->Data();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `byte` | ``$NUMBER`` | Yes |  |
-| `cleaner_than` | ``$NUMBER`` | Yes |  |
-| `gco2e` | ``$NUMBER`` | Yes |  |
-| `green` | ``$BOOLEAN`` | Yes |  |
-| `rating` | ``$STRING`` | Yes |  |
-| `statistic` | ``$OBJECT`` | Yes |  |
+| `byte` | `float` | Yes |  |
+| `cleaner_than` | `float` | Yes |  |
+| `gco2e` | `float` | Yes |  |
+| `green` | `bool` | Yes |  |
+| `rating` | `string` | Yes |  |
+| `statistic` | `array` | Yes |  |
 
 ### Operations
 
@@ -106,24 +106,24 @@ $data = $client->Data();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Data()->load(["id" => "data_id"]);
+$result = $client->Data()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -132,7 +132,7 @@ Set the entity match criteria.
 Create a new `DataEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

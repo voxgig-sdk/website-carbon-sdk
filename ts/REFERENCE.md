@@ -116,12 +116,12 @@ const data = client.Data()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `byte` | ``$NUMBER`` | Yes |  |
-| `cleaner_than` | ``$NUMBER`` | Yes |  |
-| `gco2e` | ``$NUMBER`` | Yes |  |
-| `green` | ``$BOOLEAN`` | Yes |  |
-| `rating` | ``$STRING`` | Yes |  |
-| `statistic` | ``$OBJECT`` | Yes |  |
+| `byte` | `number` | Yes |  |
+| `cleaner_than` | `number` | Yes |  |
+| `gco2e` | `number` | Yes |  |
+| `green` | `boolean` | Yes |  |
+| `rating` | `string` | Yes |  |
+| `statistic` | `Record<string, any>` | Yes |  |
 
 ### Operations
 
@@ -130,7 +130,7 @@ const data = client.Data()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Data().load({ id: 'data_id' })
+const result = await client.Data().load()
 ```
 
 ### Common Methods

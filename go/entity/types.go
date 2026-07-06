@@ -18,8 +18,7 @@ type Data struct {
 	Statistic map[string]any `json:"statistic"`
 }
 
-// DataLoadMatch mirrors the data fields as an all-optional match
-// filter (Go analog of Partial<Data>).
+// DataLoadMatch is the typed request payload for Data.LoadTyped.
 type DataLoadMatch struct {
 	Byte *float64 `json:"byte,omitempty"`
 	CleanerThan *float64 `json:"cleaner_than,omitempty"`

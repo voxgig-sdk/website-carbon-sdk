@@ -23,7 +23,7 @@ class Data
     public array $statistic;
 }
 
-/** Match filter for Data#load (any subset of Data fields). */
+/** Request payload for Data#load. */
 class DataLoadMatch
 {
     public ?float $byte = null;

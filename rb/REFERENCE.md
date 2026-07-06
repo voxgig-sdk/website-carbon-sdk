@@ -8,7 +8,7 @@ Complete API reference for the WebsiteCarbon Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'website-carbon_sdk'
+require_relative 'WebsiteCarbon_sdk'
 
 client = WebsiteCarbonSDK.new(options)
 ```
@@ -93,12 +93,12 @@ data = client.Data
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `byte` | ``$NUMBER`` | Yes |  |
-| `cleaner_than` | ``$NUMBER`` | Yes |  |
-| `gco2e` | ``$NUMBER`` | Yes |  |
-| `green` | ``$BOOLEAN`` | Yes |  |
-| `rating` | ``$STRING`` | Yes |  |
-| `statistic` | ``$OBJECT`` | Yes |  |
+| `byte` | `Float` | Yes |  |
+| `cleaner_than` | `Float` | Yes |  |
+| `gco2e` | `Float` | Yes |  |
+| `green` | `Boolean` | Yes |  |
+| `rating` | `String` | Yes |  |
+| `statistic` | `Hash` | Yes |  |
 
 ### Operations
 
@@ -107,7 +107,7 @@ data = client.Data
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Data.load({ "id" => "data_id" })
+result = client.Data.load()
 ```
 
 ### Common Methods

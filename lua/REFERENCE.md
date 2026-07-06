@@ -90,12 +90,12 @@ local data = client:Data(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `byte` | ``$NUMBER`` | Yes |  |
-| `cleaner_than` | ``$NUMBER`` | Yes |  |
-| `gco2e` | ``$NUMBER`` | Yes |  |
-| `green` | ``$BOOLEAN`` | Yes |  |
-| `rating` | ``$STRING`` | Yes |  |
-| `statistic` | ``$OBJECT`` | Yes |  |
+| `byte` | `number` | Yes |  |
+| `cleaner_than` | `number` | Yes |  |
+| `gco2e` | `number` | Yes |  |
+| `green` | `boolean` | Yes |  |
+| `rating` | `string` | Yes |  |
+| `statistic` | `table` | Yes |  |
 
 ### Operations
 
@@ -104,7 +104,7 @@ local data = client:Data(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Data():load({ id = "data_id" })
+local result, err = client:Data():load()
 ```
 
 ### Common Methods

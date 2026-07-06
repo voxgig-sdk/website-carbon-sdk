@@ -37,7 +37,7 @@ Data = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Data#load (any subset of Data fields).
+# Request payload for Data#load.
 #
 # @!attribute [rw] byte
 #   @return [Float, nil]
