@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -260,15 +257,18 @@
           "url": "https://www.websitecarbon.com/"
         },
         "description": "Calculates website carbon emissions per page view using real-time tests. Provides endpoints for testing and manual calculations to increase awareness and understanding of sustainability on the web.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://api.websitecarbon.com"
           }
         ],
+        "summary": "Calculates website carbon emissions per page view using real-time tests.",
         "termsOfService": "https://www.websitecarbon.com/",
         "title": "Website Carbon API",
         "version": "1.0.0",
+        "website": "https://www.websitecarbon.com/",
         "x-documentation": "https://api.websitecarbon.com/"
       },
       "option": {},
@@ -322,6 +322,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -372,6 +375,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

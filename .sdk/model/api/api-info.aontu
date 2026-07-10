@@ -16,11 +16,11 @@ main: {
           url: "https://api.websitecarbon.com"
         }
       ]
+      summary: "Calculates website carbon emissions per page view using real-time tests."
       termsOfService: "https://www.websitecarbon.com/"
       title: "Website Carbon API"
       version: "1.0.0"
+      website: "https://www.websitecarbon.com/"
       "x-documentation": "https://api.websitecarbon.com/"
     }
   }
-}
-
