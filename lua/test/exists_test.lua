@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- WebsiteCarbon SDK exists test
 
 local sdk = require("website-carbon_sdk")
 
