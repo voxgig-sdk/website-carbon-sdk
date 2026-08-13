@@ -15,22 +15,16 @@ declare(strict_types=1);
 /** Data entity data model. */
 class Data
 {
-    public float $byte;
-    public float $cleaner_than;
-    public float $gco2e;
-    public bool $green;
-    public string $rating;
-    public array $statistic;
+    public float $adjustedBytes;
+    public array $co2;
+    public float $energy;
 }
 
 /** Request payload for Data#load. */
 class DataLoadMatch
 {
-    public ?float $byte = null;
-    public ?float $cleaner_than = null;
-    public ?float $gco2e = null;
-    public ?bool $green = null;
-    public ?string $rating = null;
-    public ?array $statistic = null;
+    public ?float $adjustedBytes = null;
+    public ?array $co2 = null;
+    public ?float $energy = null;
 }
 

@@ -90,12 +90,9 @@ local data = client:Data(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `byte` | `number` | Yes |  |
-| `cleaner_than` | `number` | Yes |  |
-| `gco2e` | `number` | Yes |  |
-| `green` | `boolean` | Yes |  |
-| `rating` | `string` | Yes |  |
-| `statistic` | `table` | Yes |  |
+| `adjustedBytes` | `number` | Yes |  |
+| `co2` | `table` | Yes |  |
+| `energy` | `number` | Yes |  |
 
 ### Operations
 

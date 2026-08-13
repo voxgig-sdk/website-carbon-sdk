@@ -225,12 +225,9 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `byte` |  |
-| `cleaner_than` |  |
-| `gco2e` |  |
-| `green` |  |
-| `rating` |  |
-| `statistic` |  |
+| `adjustedBytes` |  |
+| `co2` |  |
+| `energy` |  |
 
 Operations: Load.
 
@@ -255,12 +252,9 @@ Create an instance: `local data = client:Data(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `byte` | `number` |  |
-| `cleaner_than` | `number` |  |
-| `gco2e` | `number` |  |
-| `green` | `boolean` |  |
-| `rating` | `string` |  |
-| `statistic` | `table` |  |
+| `adjustedBytes` | `number` |  |
+| `co2` | `table` |  |
+| `energy` | `number` |  |
 
 #### Example: Load
 

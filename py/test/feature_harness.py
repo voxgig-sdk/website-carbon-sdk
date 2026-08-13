@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import WebsiteCarbonControl
-from core.error import WebsiteCarbonError
-from core.result import WebsiteCarbonResult
-from core.spec import WebsiteCarbonSpec
+from websitecarbon_sdk.config import make_config
+from websitecarbon_sdk.features import _make_feature
+from websitecarbon_sdk.core.control import WebsiteCarbonControl
+from websitecarbon_sdk.core.error import WebsiteCarbonError
+from websitecarbon_sdk.core.result import WebsiteCarbonResult
+from websitecarbon_sdk.core.spec import WebsiteCarbonSpec
 
 
 # True when this SDK was generated with the named feature.

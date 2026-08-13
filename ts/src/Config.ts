@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'WebsiteCarbon',
   }
 
 
@@ -56,45 +56,24 @@ class Config {
       "fields": [
         {
           "active": true,
-          "name": "byte",
+          "name": "adjustedBytes",
           "req": true,
           "type": "`$NUMBER`",
           "index$": 0
         },
         {
           "active": true,
-          "name": "cleaner_than",
+          "name": "co2",
           "req": true,
-          "type": "`$NUMBER`",
+          "type": "`$OBJECT`",
           "index$": 1
         },
         {
           "active": true,
-          "name": "gco2e",
+          "name": "energy",
           "req": true,
           "type": "`$NUMBER`",
           "index$": 2
-        },
-        {
-          "active": true,
-          "name": "green",
-          "req": true,
-          "type": "`$BOOLEAN`",
-          "index$": 3
-        },
-        {
-          "active": true,
-          "name": "rating",
-          "req": true,
-          "type": "`$STRING`",
-          "index$": 4
-        },
-        {
-          "active": true,
-          "name": "statistic",
-          "req": true,
-          "type": "`$OBJECT`",
-          "index$": 5
         }
       ],
       "name": "data",
@@ -135,6 +114,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/data",
               "parts": [
@@ -149,7 +129,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.statistics`"
               },
               "index$": 0
             }

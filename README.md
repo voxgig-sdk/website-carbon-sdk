@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = WebsiteCarbonSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = WebsiteCarbonSDK.test({
+  entity: {
+    data: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const data = await client.Data().load()
-// data is a bare Data populated with mock data
+// data is the Data entity, populated with mock data
+// — call data.data() for the record itself
 console.log(data)
 ```
 
@@ -182,7 +191,7 @@ require_once 'websitecarbon_sdk.php';
 $client = new WebsiteCarbonSDK();
 
 
-// Load a specific data (returns the bare record; throws on error)
+// Load a specific data (returns the ENTITY; call data_get() for the record; throws on error)
 $data = $client->Data()->load();
 print_r($data);
 ```
@@ -210,7 +219,7 @@ require_relative "WebsiteCarbon_sdk"
 client = WebsiteCarbonSDK.new
 
 
-# Load a specific data (returns the bare record; raises on error)
+# Load a specific data (returns the ENTITY; call data_get for the record)
 data = client.Data.load()
 puts data
 ```
@@ -344,6 +353,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://www.websitecarbon.com/](https://www.websitecarbon.com/)
 

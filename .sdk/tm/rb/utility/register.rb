@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ WebsiteCarbonUtility.registrar = ->(u) {
   u.prepare_params = WebsiteCarbonUtilities::PrepareParams
   u.prepare_path = WebsiteCarbonUtilities::PreparePath
   u.prepare_query = WebsiteCarbonUtilities::PrepareQuery
+  u.graphql_body = WebsiteCarbonUtilities::GraphqlBody
+  u.graphql_errors = WebsiteCarbonUtilities::GraphqlErrors
   u.result_basic = WebsiteCarbonUtilities::ResultBasic
   u.result_body = WebsiteCarbonUtilities::ResultBody
   u.result_headers = WebsiteCarbonUtilities::ResultHeaders

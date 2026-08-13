@@ -33,7 +33,7 @@ class DataEntityTest extends TestCase
         // The basic flow consumes synthetic IDs from the fixture. In live mode
         // without an *_ENTID env override, those IDs hit the live API and 4xx.
         if (!empty($setup["synthetic_only"])) {
-            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set WEBSITECARBON_TEST_DATA_ENTID JSON to run live");
+            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set WEBSITE_CARBON_TEST_DATA_ENTID JSON to run live");
             return;
         }
         $client = $setup["client"];
@@ -77,22 +77,22 @@ function data_basic_setup($extra)
     // Detect ENTID env override before envOverride consumes it. When live
     // mode is on without a real override, the basic test runs against synthetic
     // IDs from the fixture and 4xx's. Surface this so the test can skip.
-    $entid_env_raw = getenv("WEBSITECARBON_TEST_DATA_ENTID");
+    $entid_env_raw = getenv("WEBSITE_CARBON_TEST_DATA_ENTID");
     $idmap_overridden = $entid_env_raw !== false && str_starts_with(trim($entid_env_raw), "{");
 
     $env = Runner::env_override([
-        "WEBSITECARBON_TEST_DATA_ENTID" => $idmap,
-        "WEBSITECARBON_TEST_LIVE" => "FALSE",
-        "WEBSITECARBON_TEST_EXPLAIN" => "FALSE",
+        "WEBSITE_CARBON_TEST_DATA_ENTID" => $idmap,
+        "WEBSITE_CARBON_TEST_LIVE" => "FALSE",
+        "WEBSITE_CARBON_TEST_EXPLAIN" => "FALSE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
-        $env["WEBSITECARBON_TEST_DATA_ENTID"]);
+        $env["WEBSITE_CARBON_TEST_DATA_ENTID"]);
     if ($idmap_resolved === null) {
         $idmap_resolved = Helpers::to_map($idmap);
     }
 
-    if ($env["WEBSITECARBON_TEST_LIVE"] === "TRUE") {
+    if ($env["WEBSITE_CARBON_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
             ],
@@ -101,13 +101,13 @@ function data_basic_setup($extra)
         $client = new WebsiteCarbonSDK(Helpers::to_map($merged_opts));
     }
 
-    $live = $env["WEBSITECARBON_TEST_LIVE"] === "TRUE";
+    $live = $env["WEBSITE_CARBON_TEST_LIVE"] === "TRUE";
     return [
         "client" => $client,
         "data" => $entity_data,
         "idmap" => $idmap_resolved,
         "env" => $env,
-        "explain" => $env["WEBSITECARBON_TEST_EXPLAIN"] === "TRUE",
+        "explain" => $env["WEBSITE_CARBON_TEST_EXPLAIN"] === "TRUE",
         "live" => $live,
         "synthetic_only" => $live && !$idmap_overridden,
         "now" => (int)(microtime(true) * 1000),

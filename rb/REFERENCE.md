@@ -93,12 +93,9 @@ data = client.Data
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `byte` | `Float` | Yes |  |
-| `cleaner_than` | `Float` | Yes |  |
-| `gco2e` | `Float` | Yes |  |
-| `green` | `Boolean` | Yes |  |
-| `rating` | `String` | Yes |  |
-| `statistic` | `Hash` | Yes |  |
+| `adjustedBytes` | `Float` | Yes |  |
+| `co2` | `Hash` | Yes |  |
+| `energy` | `Float` | Yes |  |
 
 ### Operations
 

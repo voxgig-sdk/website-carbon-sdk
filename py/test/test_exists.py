@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# WebsiteCarbon SDK exists test
 
 import pytest
 from websitecarbon_sdk import WebsiteCarbonSDK

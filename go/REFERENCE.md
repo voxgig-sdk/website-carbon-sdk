@@ -98,12 +98,9 @@ fmt.Println(data.GetName()) // "data"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `byte` | `float64` | Yes |  |
-| `cleaner_than` | `float64` | Yes |  |
-| `gco2e` | `float64` | Yes |  |
-| `green` | `bool` | Yes |  |
-| `rating` | `string` | Yes |  |
-| `statistic` | `map[string]any` | Yes |  |
+| `adjustedBytes` | `float64` | Yes |  |
+| `co2` | `map[string]any` | Yes |  |
+| `energy` | `float64` | Yes |  |
 
 ### Operations
 

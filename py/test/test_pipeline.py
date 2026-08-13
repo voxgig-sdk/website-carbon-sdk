@@ -16,11 +16,11 @@
 import pytest
 
 from websitecarbon_sdk import WebsiteCarbonSDK
-from core.error import WebsiteCarbonError
-from core.result import WebsiteCarbonResult
-from core.response import WebsiteCarbonResponse
-from core.spec import WebsiteCarbonSpec
-from feature.base_feature import WebsiteCarbonBaseFeature
+from websitecarbon_sdk.core.error import WebsiteCarbonError
+from websitecarbon_sdk.core.result import WebsiteCarbonResult
+from websitecarbon_sdk.core.response import WebsiteCarbonResponse
+from websitecarbon_sdk.core.spec import WebsiteCarbonSpec
+from websitecarbon_sdk.feature.base_feature import WebsiteCarbonBaseFeature
 
 
 def _client():

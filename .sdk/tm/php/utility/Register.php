@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ WebsiteCarbonUtility::setRegistrar(function (WebsiteCarbonUtility $u): void {
     $u->prepare_params = [WebsiteCarbonPrepareParams::class, 'call'];
     $u->prepare_path = [WebsiteCarbonPreparePath::class, 'call'];
     $u->prepare_query = [WebsiteCarbonPrepareQuery::class, 'call'];
+    $u->graphql_body = [WebsiteCarbonGraphql::class, 'body'];
+    $u->graphql_errors = [WebsiteCarbonGraphql::class, 'errors'];
     $u->result_basic = [WebsiteCarbonResultBasic::class, 'call'];
     $u->result_body = [WebsiteCarbonResultBody::class, 'call'];
     $u->result_headers = [WebsiteCarbonResultHeaders::class, 'call'];

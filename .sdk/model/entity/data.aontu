@@ -6,34 +6,19 @@ main: kit: entity: data: {
 
   fields: [
     {
-      name: "byte"
+      name: "adjustedBytes"
       req: true
       type: "`$NUMBER`"
     }
     {
-      name: "cleaner_than"
-      req: true
-      type: "`$NUMBER`"
-    }
-    {
-      name: "gco2e"
-      req: true
-      type: "`$NUMBER`"
-    }
-    {
-      name: "green"
-      req: true
-      type: "`$BOOLEAN`"
-    }
-    {
-      name: "rating"
-      req: true
-      type: "`$STRING`"
-    }
-    {
-      name: "statistic"
+      name: "co2"
       req: true
       type: "`$OBJECT`"
+    }
+    {
+      name: "energy"
+      req: true
+      type: "`$NUMBER`"
     }
   ]
 
@@ -84,7 +69,7 @@ main: kit: entity: data: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.statistics`"
           }
         }
       ]

@@ -121,7 +121,8 @@ Create a mock client for unit testing — no server required:
 const client = WebsiteCarbonSDK.test()
 
 const data = await client.Data().load()
-// data is a bare entity populated with mock response data
+// data is the entity, populated with mock response data
+// — call data.data() for the record itself
 console.log(data)
 ```
 
@@ -284,12 +285,9 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `byte` |  |
-| `cleaner_than` |  |
-| `gco2e` |  |
-| `green` |  |
-| `rating` |  |
-| `statistic` |  |
+| `adjustedBytes` |  |
+| `co2` |  |
+| `energy` |  |
 
 Operations: load.
 
@@ -314,12 +312,9 @@ Create an instance: `const data = client.Data()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `byte` | `number` |  |
-| `cleaner_than` | `number` |  |
-| `gco2e` | `number` |  |
-| `green` | `boolean` |  |
-| `rating` | `string` |  |
-| `statistic` | `Record<string, any>` |  |
+| `adjustedBytes` | `number` |  |
+| `co2` | `Record<string, any>` |  |
+| `energy` | `number` |  |
 
 #### Example: Load
 

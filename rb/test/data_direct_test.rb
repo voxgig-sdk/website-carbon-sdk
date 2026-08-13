@@ -66,11 +66,11 @@ def data_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "WEBSITECARBON_TEST_DATA_ENTID" => {},
-    "WEBSITECARBON_TEST_LIVE" => "FALSE",
+    "WEBSITE_CARBON_TEST_DATA_ENTID" => {},
+    "WEBSITE_CARBON_TEST_LIVE" => "FALSE",
   })
 
-  live = env["WEBSITECARBON_TEST_LIVE"] == "TRUE"
+  live = env["WEBSITE_CARBON_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {

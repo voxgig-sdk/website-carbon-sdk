@@ -23,8 +23,8 @@ module WebsiteCarbonTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("WEBSITECARBON_TEST_LIVE")
-    override = getenv("WEBSITECARBON_TEST_OVERRIDE")
+    live = getenv("WEBSITE_CARBON_TEST_LIVE")
+    override = getenv("WEBSITE_CARBON_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module WebsiteCarbonTestRunner
       end
     end
 
-    explain = getenv("WEBSITECARBON_TEST_EXPLAIN")
-    m["WEBSITECARBON_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("WEBSITE_CARBON_TEST_EXPLAIN")
+    m["WEBSITE_CARBON_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

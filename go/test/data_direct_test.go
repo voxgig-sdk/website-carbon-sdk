@@ -42,7 +42,8 @@ func TestDataDirect(t *testing.T) {
 		if setup.live {
 			// Live mode is lenient: synthetic IDs frequently 4xx. Skip
 			// rather than fail when the load endpoint isn't reachable with
-			// the IDs we can construct from setup.idmap.
+			// the IDs we can construct from setup.idmap — unless the model
+			// sets main.kit.test.live.strict.
 			if err != nil {
 				t.Skipf("load call failed (likely synthetic IDs against live API): %v", err)
 			}
@@ -104,11 +105,11 @@ func dataDirectSetup(mockres any) *dataDirectSetupResult {
 	calls := &[]map[string]any{}
 
 	env := envOverride(map[string]any{
-		"WEBSITECARBON_TEST_DATA_ENTID": map[string]any{},
-		"WEBSITECARBON_TEST_LIVE":    "FALSE",
+		"WEBSITE_CARBON_TEST_DATA_ENTID": map[string]any{},
+		"WEBSITE_CARBON_TEST_LIVE":    "FALSE",
 	})
 
-	live := env["WEBSITECARBON_TEST_LIVE"] == "TRUE"
+	live := env["WEBSITE_CARBON_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
@@ -116,7 +117,7 @@ func dataDirectSetup(mockres any) *dataDirectSetupResult {
 		client := sdk.NewWebsiteCarbonSDK(mergedOpts)
 
 		idmap := map[string]any{}
-		if entidRaw, ok := env["WEBSITECARBON_TEST_DATA_ENTID"]; ok {
+		if entidRaw, ok := env["WEBSITE_CARBON_TEST_DATA_ENTID"]; ok {
 			if entidStr, ok := entidRaw.(string); ok && strings.HasPrefix(entidStr, "{") {
 				json.Unmarshal([]byte(entidStr), &idmap)
 			} else if entidMap, ok := entidRaw.(map[string]any); ok {

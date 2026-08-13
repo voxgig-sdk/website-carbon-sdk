@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from websitecarbon_sdk.utility.voxgig_struct import voxgig_struct as vs
 from websitecarbon_sdk import WebsiteCarbonSDK
-from core import helpers
+from websitecarbon_sdk.core import helpers
 from test import runner
 
 
@@ -62,11 +62,11 @@ def _data_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "WEBSITECARBON_TEST_DATA_ENTID": {},
-        "WEBSITECARBON_TEST_LIVE": "FALSE",
+        "WEBSITE_CARBON_TEST_DATA_ENTID": {},
+        "WEBSITE_CARBON_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("WEBSITECARBON_TEST_LIVE") == "TRUE"
+    live = env.get("WEBSITE_CARBON_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

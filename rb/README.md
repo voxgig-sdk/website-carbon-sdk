@@ -34,7 +34,7 @@ client = WebsiteCarbonSDK.new
 
 ```ruby
 begin
-  # load returns the bare Data record (raises on error).
+  # load returns the ENTITY — call data_get for the Data record (raises on error).
   data = client.Data.load()
   puts data
 rescue => err
@@ -117,7 +117,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = WebsiteCarbonSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 data = client.Data.load()
 puts data
 ```
@@ -234,12 +235,9 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `byte` |  |
-| `cleaner_than` |  |
-| `gco2e` |  |
-| `green` |  |
-| `rating` |  |
-| `statistic` |  |
+| `adjustedBytes` |  |
+| `co2` |  |
+| `energy` |  |
 
 Operations: Load.
 
@@ -264,17 +262,14 @@ Create an instance: `data = client.Data`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `byte` | `Float` |  |
-| `cleaner_than` | `Float` |  |
-| `gco2e` | `Float` |  |
-| `green` | `Boolean` |  |
-| `rating` | `String` |  |
-| `statistic` | `Hash` |  |
+| `adjustedBytes` | `Float` |  |
+| `co2` | `Hash` |  |
+| `energy` | `Float` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Data record (raises on error).
+# load returns the ENTITY — call data_get for the Data record (raises on error).
 data = client.Data.load()
 ```
 

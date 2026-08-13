@@ -92,12 +92,9 @@ $data = $client->Data();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `byte` | `float` | Yes |  |
-| `cleaner_than` | `float` | Yes |  |
-| `gco2e` | `float` | Yes |  |
-| `green` | `bool` | Yes |  |
-| `rating` | `string` | Yes |  |
-| `statistic` | `array` | Yes |  |
+| `adjustedBytes` | `float` | Yes |  |
+| `co2` | `array` | Yes |  |
+| `energy` | `float` | Yes |  |
 
 ### Operations
 

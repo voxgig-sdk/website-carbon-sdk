@@ -44,7 +44,7 @@ func TestDataEntity(t *testing.T) {
 		// The basic flow consumes synthetic IDs from the fixture. In live mode
 		// without an *_ENTID env override, those IDs hit the live API and 4xx.
 		if setup.syntheticOnly {
-			t.Skip("live entity test uses synthetic IDs from fixture — set WEBSITECARBON_TEST_DATA_ENTID JSON to run live")
+			t.Skip("live entity test uses synthetic IDs from fixture — set WEBSITE_CARBON_TEST_DATA_ENTID JSON to run live")
 			return
 		}
 		client := setup.client
@@ -110,21 +110,21 @@ func dataBasicSetup(extra map[string]any) *entityTestSetup {
 	// Detect ENTID env override before envOverride consumes it. When live
 	// mode is on without a real override, the basic test runs against synthetic
 	// IDs from the fixture and 4xx's. Surface this so the test can skip.
-	entidEnvRaw := os.Getenv("WEBSITECARBON_TEST_DATA_ENTID")
+	entidEnvRaw := os.Getenv("WEBSITE_CARBON_TEST_DATA_ENTID")
 	idmapOverridden := entidEnvRaw != "" && strings.HasPrefix(strings.TrimSpace(entidEnvRaw), "{")
 
 	env := envOverride(map[string]any{
-		"WEBSITECARBON_TEST_DATA_ENTID": idmap,
-		"WEBSITECARBON_TEST_LIVE":      "FALSE",
-		"WEBSITECARBON_TEST_EXPLAIN":   "FALSE",
+		"WEBSITE_CARBON_TEST_DATA_ENTID": idmap,
+		"WEBSITE_CARBON_TEST_LIVE":      "FALSE",
+		"WEBSITE_CARBON_TEST_EXPLAIN":   "FALSE",
 	})
 
-	idmapResolved := core.ToMapAny(env["WEBSITECARBON_TEST_DATA_ENTID"])
+	idmapResolved := core.ToMapAny(env["WEBSITE_CARBON_TEST_DATA_ENTID"])
 	if idmapResolved == nil {
 		idmapResolved = core.ToMapAny(idmap)
 	}
 
-	if env["WEBSITECARBON_TEST_LIVE"] == "TRUE" {
+	if env["WEBSITE_CARBON_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
 			},
@@ -133,13 +133,13 @@ func dataBasicSetup(extra map[string]any) *entityTestSetup {
 		client = sdk.NewWebsiteCarbonSDK(core.ToMapAny(mergedOpts))
 	}
 
-	live := env["WEBSITECARBON_TEST_LIVE"] == "TRUE"
+	live := env["WEBSITE_CARBON_TEST_LIVE"] == "TRUE"
 	return &entityTestSetup{
 		client:        client,
 		data:          entityData,
 		idmap:         idmapResolved,
 		env:           env,
-		explain:       env["WEBSITECARBON_TEST_EXPLAIN"] == "TRUE",
+		explain:       env["WEBSITE_CARBON_TEST_EXPLAIN"] == "TRUE",
 		live:          live,
 		syntheticOnly: live && !idmapOverridden,
 		now:           time.Now().UnixMilli(),

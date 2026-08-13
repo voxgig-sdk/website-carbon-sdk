@@ -6,20 +6,14 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface Data {
-  byte: number
-  cleaner_than: number
-  gco2e: number
-  green: boolean
-  rating: string
-  statistic: Record<string, any>
+  adjustedBytes: number
+  co2: Record<string, any>
+  energy: number
 }
 
 export interface DataLoadMatch {
-  byte?: number
-  cleaner_than?: number
-  gco2e?: number
-  green?: boolean
-  rating?: string
-  statistic?: Record<string, any>
+  adjustedBytes?: number
+  co2?: Record<string, any>
+  energy?: number
 }
 

@@ -43,8 +43,8 @@ class WebsiteCarbonTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('WEBSITECARBON_TEST_LIVE');
-        $override = self::getenv('WEBSITECARBON_TEST_OVERRIDE');
+        $live = self::getenv('WEBSITE_CARBON_TEST_LIVE');
+        $override = self::getenv('WEBSITE_CARBON_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class WebsiteCarbonTestRunner
             }
         }
 
-        $explain = self::getenv('WEBSITECARBON_TEST_EXPLAIN');
+        $explain = self::getenv('WEBSITE_CARBON_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['WEBSITECARBON_TEST_EXPLAIN'] = $explain;
+            $m['WEBSITE_CARBON_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

@@ -258,12 +258,9 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"byte"` |  |
-| `"cleaner_than"` |  |
-| `"gco2e"` |  |
-| `"green"` |  |
-| `"rating"` |  |
-| `"statistic"` |  |
+| `"adjustedBytes"` |  |
+| `"co2"` |  |
+| `"energy"` |  |
 
 Operations: Load.
 
@@ -288,12 +285,9 @@ Create an instance: `data := client.Data(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `byte` | `float64` |  |
-| `cleaner_than` | `float64` |  |
-| `gco2e` | `float64` |  |
-| `green` | `bool` |  |
-| `rating` | `string` |  |
-| `statistic` | `map[string]any` |  |
+| `adjustedBytes` | `float64` |  |
+| `co2` | `map[string]any` |  |
+| `energy` | `float64` |  |
 
 #### Example: Load
 

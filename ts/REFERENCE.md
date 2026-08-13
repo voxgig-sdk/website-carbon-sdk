@@ -116,12 +116,9 @@ const data = client.Data()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `byte` | `number` | Yes |  |
-| `cleaner_than` | `number` | Yes |  |
-| `gco2e` | `number` | Yes |  |
-| `green` | `boolean` | Yes |  |
-| `rating` | `string` | Yes |  |
-| `statistic` | `Record<string, any>` | Yes |  |
+| `adjustedBytes` | `number` | Yes |  |
+| `co2` | `Record<string, any>` | Yes |  |
+| `energy` | `number` | Yes |  |
 
 ### Operations
 

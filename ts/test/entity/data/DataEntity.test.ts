@@ -26,8 +26,8 @@ import {
 describe('DataEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when WEBSITECARBON_TEST_LIVE=TRUE.
-  afterEach(liveDelay('WEBSITECARBON_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when WEBSITE_CARBON_TEST_LIVE=TRUE.
+  afterEach(liveDelay('WEBSITE_CARBON_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = WebsiteCarbonSDK.test()
@@ -62,7 +62,7 @@ describe('DataEntity', async () => {
     // LOAD
     const data_ref01_ent = client.Data()
     const data_ref01_match_dt0: any = {}
-    const data_ref01_data_dt0 = await data_ref01_ent.load(data_ref01_match_dt0)
+    const data_ref01_data_dt0 = (await data_ref01_ent.load(data_ref01_match_dt0)).data()
     assert(null != data_ref01_data_dt0)
 
 

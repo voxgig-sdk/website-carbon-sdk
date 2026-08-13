@@ -7,20 +7,14 @@
 -- edit by hand.
 
 ---@class Data
----@field byte number
----@field cleaner_than number
----@field gco2e number
----@field green boolean
----@field rating string
----@field statistic table
+---@field adjustedBytes number
+---@field co2 table
+---@field energy number
 
 ---@class DataLoadMatch
----@field byte? number
----@field cleaner_than? number
----@field gco2e? number
----@field green? boolean
----@field rating? string
----@field statistic? table
+---@field adjustedBytes? number
+---@field co2? table
+---@field energy? number
 
 local M = {}
 

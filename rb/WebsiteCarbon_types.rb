@@ -10,59 +10,35 @@
 
 # Data entity data model.
 #
-# @!attribute [rw] byte
+# @!attribute [rw] adjustedBytes
 #   @return [Float]
 #
-# @!attribute [rw] cleaner_than
-#   @return [Float]
-#
-# @!attribute [rw] gco2e
-#   @return [Float]
-#
-# @!attribute [rw] green
-#   @return [Boolean]
-#
-# @!attribute [rw] rating
-#   @return [String]
-#
-# @!attribute [rw] statistic
+# @!attribute [rw] co2
 #   @return [Hash]
-Data = Struct.new(
-  :byte,
-  :cleaner_than,
-  :gco2e,
-  :green,
-  :rating,
-  :statistic,
+#
+# @!attribute [rw] energy
+#   @return [Float]
+DataType = Struct.new(
+  :adjustedBytes,
+  :co2,
+  :energy,
   keyword_init: true
 )
 
 # Request payload for Data#load.
 #
-# @!attribute [rw] byte
+# @!attribute [rw] adjustedBytes
 #   @return [Float, nil]
 #
-# @!attribute [rw] cleaner_than
-#   @return [Float, nil]
-#
-# @!attribute [rw] gco2e
-#   @return [Float, nil]
-#
-# @!attribute [rw] green
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] rating
-#   @return [String, nil]
-#
-# @!attribute [rw] statistic
+# @!attribute [rw] co2
 #   @return [Hash, nil]
+#
+# @!attribute [rw] energy
+#   @return [Float, nil]
 DataLoadMatch = Struct.new(
-  :byte,
-  :cleaner_than,
-  :gco2e,
-  :green,
-  :rating,
-  :statistic,
+  :adjustedBytes,
+  :co2,
+  :energy,
   keyword_init: true
 )
 
