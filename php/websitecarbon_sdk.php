@@ -40,7 +40,7 @@ class WebsiteCarbonSDK
         $utility = new WebsiteCarbonUtility();
         $this->_utility = $utility;
 
-        $config = WebsiteCarbonConfig::make_config();
+        $config = WebsiteCarbonConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

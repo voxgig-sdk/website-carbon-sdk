@@ -1,6 +1,20 @@
 # WebsiteCarbon SDK configuration
 
 module WebsiteCarbonConfig
+  # Return the process-wide config, built once on first use. The SDK reads
+  # the config on every request and never writes to it, so one instance is
+  # shared by every client rather than rebuilt per client.
+  #
+  # The returned hash is shared: treat it as read-only. Callers that need to
+  # mutate should use make_config, which always returns a fresh copy.
+  def self.shared_config
+    @shared_config ||= make_config
+  end
+
+
+  # Build a fresh, fully materialised config hash. Every call rebuilds the
+  # whole structure, so prefer shared_config unless you need a private copy
+  # you intend to mutate.
   def self.make_config
     {
       "main" => {
@@ -26,25 +40,19 @@ module WebsiteCarbonConfig
         "data" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "adjustedBytes",
               "req" => true,
               "type" => "`$NUMBER`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "co2",
               "req" => true,
               "type" => "`$OBJECT`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "energy",
               "req" => true,
               "type" => "`$NUMBER`",
-              "index$" => 2,
             },
           ],
           "name" => "data",
@@ -54,11 +62,9 @@ module WebsiteCarbonConfig
               "name" => "load",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "example" => 12345678,
                         "kind" => "query",
                         "name" => "byte",
@@ -67,7 +73,6 @@ module WebsiteCarbonConfig
                         "type" => "`$INTEGER`",
                       },
                       {
-                        "active" => true,
                         "example" => 1,
                         "kind" => "query",
                         "name" => "green",
@@ -76,11 +81,9 @@ module WebsiteCarbonConfig
                         "type" => "`$INTEGER`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "legacy",
                         "orig" => "legacy",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                     ],
@@ -102,10 +105,8 @@ module WebsiteCarbonConfig
                     "req" => "`reqdata`",
                     "res" => "`body.statistics`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "load",
             },
           },
           "relations" => {

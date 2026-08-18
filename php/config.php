@@ -5,6 +5,29 @@ declare(strict_types=1);
 
 class WebsiteCarbonConfig
 {
+    /** @var array<string,mixed>|null */
+    private static ?array $shared_config = null;
+
+    /**
+     * Return the process-wide config, built once on first use. The SDK reads
+     * the config on every request and never writes to it, so one instance is
+     * shared by every client rather than rebuilt per client.
+     *
+     * PHP arrays are copy-on-write, so callers that do mutate the result get
+     * their own copy and cannot disturb the shared one.
+     */
+    public static function shared_config(): array
+    {
+        if (self::$shared_config === null) {
+            self::$shared_config = self::make_config();
+        }
+        return self::$shared_config;
+    }
+
+    /**
+     * Build a fresh, fully materialised config array. Every call rebuilds the
+     * whole structure, so prefer shared_config unless you need a private copy.
+     */
     public static function make_config(): array
     {
         return [
@@ -31,25 +54,19 @@ class WebsiteCarbonConfig
         'data' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'adjustedBytes',
               'req' => true,
               'type' => '`$NUMBER`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'co2',
               'req' => true,
               'type' => '`$OBJECT`',
-              'index$' => 1,
             ],
             [
-              'active' => true,
               'name' => 'energy',
               'req' => true,
               'type' => '`$NUMBER`',
-              'index$' => 2,
             ],
           ],
           'name' => 'data',
@@ -59,11 +76,9 @@ class WebsiteCarbonConfig
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'example' => 12345678,
                         'kind' => 'query',
                         'name' => 'byte',
@@ -72,7 +87,6 @@ class WebsiteCarbonConfig
                         'type' => '`$INTEGER`',
                       ],
                       [
-                        'active' => true,
                         'example' => 1,
                         'kind' => 'query',
                         'name' => 'green',
@@ -81,11 +95,9 @@ class WebsiteCarbonConfig
                         'type' => '`$INTEGER`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'legacy',
                         'orig' => 'legacy',
-                        'reqd' => false,
                         'type' => '`$INTEGER`',
                       ],
                     ],
@@ -107,10 +119,8 @@ class WebsiteCarbonConfig
                     'req' => '`reqdata`',
                     'res' => '`body.statistics`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [

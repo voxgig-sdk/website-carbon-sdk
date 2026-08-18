@@ -28,7 +28,7 @@ class WebsiteCarbonSDK
     utility = WebsiteCarbonUtility.new
     @_utility = utility
 
-    config = WebsiteCarbonConfig.make_config
+    config = WebsiteCarbonConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

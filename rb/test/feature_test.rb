@@ -15,7 +15,7 @@ require_relative "../WebsiteCarbon_sdk"
 module WebsiteCarbonFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = WebsiteCarbonConfig.make_config["feature"]
+    f = WebsiteCarbonConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

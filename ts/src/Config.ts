@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://api.websitecarbon.com',
+    base: "https://api.websitecarbon.com",
 
     headers: {
       "content-type": "application/json"
@@ -55,25 +55,19 @@ class Config {
     "data": {
       "fields": [
         {
-          "active": true,
           "name": "adjustedBytes",
           "req": true,
-          "type": "`$NUMBER`",
-          "index$": 0
+          "type": "`$NUMBER`"
         },
         {
-          "active": true,
           "name": "co2",
           "req": true,
-          "type": "`$OBJECT`",
-          "index$": 1
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "energy",
           "req": true,
-          "type": "`$NUMBER`",
-          "index$": 2
+          "type": "`$NUMBER`"
         }
       ],
       "name": "data",
@@ -83,11 +77,9 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "query": [
                   {
-                    "active": true,
                     "example": 12345678,
                     "kind": "query",
                     "name": "byte",
@@ -96,7 +88,6 @@ class Config {
                     "type": "`$INTEGER`"
                   },
                   {
-                    "active": true,
                     "example": 1,
                     "kind": "query",
                     "name": "green",
@@ -105,11 +96,9 @@ class Config {
                     "type": "`$INTEGER`"
                   },
                   {
-                    "active": true,
                     "kind": "query",
                     "name": "legacy",
                     "orig": "legacy",
-                    "reqd": false,
                     "type": "`$INTEGER`"
                   }
                 ]
@@ -130,11 +119,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.statistics`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {

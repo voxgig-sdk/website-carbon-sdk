@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from websitecarbon_sdk.config import make_config
+from websitecarbon_sdk.config import shared_config
 from websitecarbon_sdk.features import _make_feature
 from websitecarbon_sdk.core.control import WebsiteCarbonControl
 from websitecarbon_sdk.core.error import WebsiteCarbonError
@@ -24,7 +24,7 @@ from websitecarbon_sdk.core.spec import WebsiteCarbonSpec
 
 # True when this SDK was generated with the named feature.
 def has_feature(name):
-    feature = make_config().get("feature")
+    feature = shared_config().get("feature")
     return isinstance(feature, dict) and feature.get(name) is not None
 
 

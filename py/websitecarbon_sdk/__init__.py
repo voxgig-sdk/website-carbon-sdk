@@ -23,8 +23,8 @@ class WebsiteCarbonSDK:
         utility = WebsiteCarbonUtility()
         self._utility = utility
 
-        from websitecarbon_sdk.config import make_config
-        config = make_config()
+        from websitecarbon_sdk.config import shared_config
+        config = shared_config()
 
         self._rootctx = utility.make_context({
             "client": self,

@@ -1,5 +1,8 @@
 -- WebsiteCarbon SDK configuration
 
+-- Build a fresh, fully materialised config table. Every call rebuilds the
+-- whole structure, so prefer require("config_shared") unless you need a
+-- private copy you intend to mutate.
 local function make_config()
   return {
     main = {
@@ -25,25 +28,19 @@ local function make_config()
       ["data"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "adjustedBytes",
             ["req"] = true,
             ["type"] = "`$NUMBER`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "co2",
             ["req"] = true,
             ["type"] = "`$OBJECT`",
-            ["index$"] = 1,
           },
           {
-            ["active"] = true,
             ["name"] = "energy",
             ["req"] = true,
             ["type"] = "`$NUMBER`",
-            ["index$"] = 2,
           },
         },
         ["name"] = "data",
@@ -53,11 +50,9 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["example"] = 12345678,
                       ["kind"] = "query",
                       ["name"] = "byte",
@@ -66,7 +61,6 @@ local function make_config()
                       ["type"] = "`$INTEGER`",
                     },
                     {
-                      ["active"] = true,
                       ["example"] = 1,
                       ["kind"] = "query",
                       ["name"] = "green",
@@ -75,11 +69,9 @@ local function make_config()
                       ["type"] = "`$INTEGER`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "legacy",
                       ["orig"] = "legacy",
-                      ["reqd"] = false,
                       ["type"] = "`$INTEGER`",
                     },
                   },
@@ -101,10 +93,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.statistics`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "load",
           },
         },
         ["relations"] = {
