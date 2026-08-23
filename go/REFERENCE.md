@@ -98,9 +98,9 @@ fmt.Println(data.GetName()) // "data"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `adjustedBytes` | `float64` | Yes |  |
-| `co2` | `map[string]any` | Yes |  |
-| `energy` | `float64` | Yes |  |
+| `adjustedBytes` | `float64` | Yes | The data transfer of the page load adjusted to take returning visitor caching into account. |
+| `co2` | `map[string]any` | Yes | Object containing data relating to CO2 emissions from each page load. |
+| `energy` | `float64` | Yes | The approximate amount of energy required for each page load in kWh |
 
 ### Operations
 

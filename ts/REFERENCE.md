@@ -116,9 +116,9 @@ const data = client.Data()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `adjustedBytes` | `number` | Yes |  |
-| `co2` | `Record<string, any>` | Yes |  |
-| `energy` | `number` | Yes |  |
+| `adjustedBytes` | `number` | Yes | The data transfer of the page load adjusted to take returning visitor caching into account. |
+| `co2` | `Record<string, any>` | Yes | Object containing data relating to CO2 emissions from each page load. |
+| `energy` | `number` | Yes | The approximate amount of energy required for each page load in kWh |
 
 ### Operations
 

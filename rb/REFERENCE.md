@@ -93,9 +93,9 @@ data = client.Data
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `adjustedBytes` | `Float` | Yes |  |
-| `co2` | `Hash` | Yes |  |
-| `energy` | `Float` | Yes |  |
+| `adjustedBytes` | `Float` | Yes | The data transfer of the page load adjusted to take returning visitor caching into account. |
+| `co2` | `Hash` | Yes | Object containing data relating to CO2 emissions from each page load. |
+| `energy` | `Float` | Yes | The approximate amount of energy required for each page load in kWh |
 
 ### Operations
 

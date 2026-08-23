@@ -6,7 +6,7 @@ The Golang SDK for the WebsiteCarbon API — an entity-oriented client using sta
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Data(nil)` — each with the same small set of operations (`Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -258,9 +258,9 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"adjustedBytes"` |  |
-| `"co2"` |  |
-| `"energy"` |  |
+| `"adjustedBytes"` | The data transfer of the page load adjusted to take returning visitor caching into account. |
+| `"co2"` | Object containing data relating to CO2 emissions from each page load. |
+| `"energy"` | The approximate amount of energy required for each page load in kWh |
 
 Operations: Load.
 
@@ -285,9 +285,9 @@ Create an instance: `data := client.Data(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `adjustedBytes` | `float64` |  |
-| `co2` | `map[string]any` |  |
-| `energy` | `float64` |  |
+| `adjustedBytes` | `float64` | The data transfer of the page load adjusted to take returning visitor caching into account. |
+| `co2` | `map[string]any` | Object containing data relating to CO2 emissions from each page load. |
+| `energy` | `float64` | The approximate amount of energy required for each page load in kWh |
 
 #### Example: Load
 

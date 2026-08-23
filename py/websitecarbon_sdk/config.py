@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "WebsiteCarbon",
+            "slug": "website-carbon",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -51,16 +54,19 @@ def make_config():
           {
             "name": "adjustedBytes",
             "req": True,
+            "short": "The data transfer of the page load adjusted to take returning visitor caching into account.",
             "type": "`$NUMBER`",
           },
           {
             "name": "co2",
             "req": True,
+            "short": "Object containing data relating to CO2 emissions from each page load.",
             "type": "`$OBJECT`",
           },
           {
             "name": "energy",
             "req": True,
+            "short": "The approximate amount of energy required for each page load in kWh",
             "type": "`$NUMBER`",
           },
         ],

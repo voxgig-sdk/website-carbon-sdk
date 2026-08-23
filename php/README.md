@@ -245,9 +245,9 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `adjustedBytes` |  |
-| `co2` |  |
-| `energy` |  |
+| `adjustedBytes` | The data transfer of the page load adjusted to take returning visitor caching into account. |
+| `co2` | Object containing data relating to CO2 emissions from each page load. |
+| `energy` | The approximate amount of energy required for each page load in kWh |
 
 Operations: Load.
 
@@ -272,9 +272,9 @@ Create an instance: `$data = $client->Data();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `adjustedBytes` | `float` |  |
-| `co2` | `array` |  |
-| `energy` | `float` |  |
+| `adjustedBytes` | `float` | The data transfer of the page load adjusted to take returning visitor caching into account. |
+| `co2` | `array` | Object containing data relating to CO2 emissions from each page load. |
+| `energy` | `float` | The approximate amount of energy required for each page load in kWh |
 
 #### Example: Load
 

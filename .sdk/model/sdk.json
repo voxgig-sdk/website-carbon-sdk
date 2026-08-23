@@ -36,18 +36,21 @@
               "active": true,
               "name": "adjustedBytes",
               "req": true,
+              "short": "The data transfer of the page load adjusted to take returning visitor caching into account.",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "co2",
               "req": true,
+              "short": "Object containing data relating to CO2 emissions from each page load.",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "energy",
               "req": true,
+              "short": "The approximate amount of energy required for each page load in kWh",
               "type": "`$NUMBER`"
             }
           ],

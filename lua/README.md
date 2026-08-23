@@ -225,9 +225,9 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `adjustedBytes` |  |
-| `co2` |  |
-| `energy` |  |
+| `adjustedBytes` | The data transfer of the page load adjusted to take returning visitor caching into account. |
+| `co2` | Object containing data relating to CO2 emissions from each page load. |
+| `energy` | The approximate amount of energy required for each page load in kWh |
 
 Operations: Load.
 
@@ -252,9 +252,9 @@ Create an instance: `local data = client:Data(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `adjustedBytes` | `number` |  |
-| `co2` | `table` |  |
-| `energy` | `number` |  |
+| `adjustedBytes` | `number` | The data transfer of the page load adjusted to take returning visitor caching into account. |
+| `co2` | `table` | Object containing data relating to CO2 emissions from each page load. |
+| `energy` | `number` | The approximate amount of energy required for each page load in kWh |
 
 #### Example: Load
 
