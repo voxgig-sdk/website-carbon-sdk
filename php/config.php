@@ -42,6 +42,7 @@ class WebsiteCarbonConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
