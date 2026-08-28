@@ -23,8 +23,8 @@ class Data
 /** Request payload for Data#load. */
 class DataLoadMatch
 {
-    public ?float $adjustedBytes = null;
-    public ?array $co2 = null;
-    public ?float $energy = null;
+    public int $byte;
+    public int $green;
+    public ?int $legacy = null;
 }
 

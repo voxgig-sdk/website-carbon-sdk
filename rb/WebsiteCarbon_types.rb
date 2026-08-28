@@ -27,18 +27,18 @@ DataType = Struct.new(
 
 # Request payload for Data#load.
 #
-# @!attribute [rw] adjustedBytes
-#   @return [Float, nil]
+# @!attribute [rw] byte
+#   @return [Integer]
 #
-# @!attribute [rw] co2
-#   @return [Hash, nil]
+# @!attribute [rw] green
+#   @return [Integer]
 #
-# @!attribute [rw] energy
-#   @return [Float, nil]
+# @!attribute [rw] legacy
+#   @return [Integer, nil]
 DataLoadMatch = Struct.new(
-  :adjustedBytes,
-  :co2,
-  :energy,
+  :byte,
+  :green,
+  :legacy,
   keyword_init: true
 )
 

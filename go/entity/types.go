@@ -21,9 +21,9 @@ type Data struct {
 
 // DataLoadMatch is the typed request payload for Data.LoadTyped.
 type DataLoadMatch struct {
-	AdjustedBytes *float64 `json:"adjustedBytes,omitempty"`
-	Co2 *map[string]any `json:"co2,omitempty"`
-	Energy *float64 `json:"energy,omitempty"`
+	Byte int `json:"byte"`
+	Green int `json:"green"`
+	Legacy *int `json:"legacy,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

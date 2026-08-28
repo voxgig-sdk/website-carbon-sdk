@@ -35,7 +35,7 @@ client = WebsiteCarbonSDK.new
 ```ruby
 begin
   # load returns the ENTITY — call data_get for the Data record (raises on error).
-  data = client.Data.load()
+  data = client.Data.load({ "byte" => 1, "green" => 1 })
   puts data
 rescue => err
   warn "load failed: #{err}"
@@ -49,7 +49,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  data = client.Data.load()
+  data = client.Data.load({ "byte" => 1, "green" => 1 })
 rescue => err
   warn "load failed: #{err}"
 end
@@ -119,7 +119,7 @@ client = WebsiteCarbonSDK.test
 
 # Entity ops return the ENTITY (raises on error);
 # call data_get for the mock record.
-data = client.Data.load()
+data = client.Data.load({ "byte" => 1, "green" => 1 })
 puts data
 ```
 
@@ -270,8 +270,31 @@ Create an instance: `data = client.Data`
 
 ```ruby
 # load returns the ENTITY — call data_get for the Data record (raises on error).
-data = client.Data.load()
+data = client.Data.load({ "byte" => 1, "green" => 1 })
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -351,7 +374,7 @@ stores the returned data and match criteria internally.
 
 ```ruby
 data = client.Data
-data.load()
+data.load({ "byte" => 1, "green" => 1 })
 
 # data.data_get now returns the data data from the last load
 # data.match_get returns the last match criteria

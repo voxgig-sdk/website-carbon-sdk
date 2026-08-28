@@ -51,7 +51,7 @@ func main() {
     client := sdk.New()
 
     // Load a single data — the value is the loaded record.
-    data, err := client.Data(nil).Load(nil, nil)
+    data, err := client.Data(nil).Load(map[string]any{"byte": 1, "green": 1}, nil)
     if err != nil {
         panic(err)
     }
@@ -66,7 +66,7 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-data, err := client.Data(nil).Load(nil, nil)
+data, err := client.Data(nil).Load(map[string]any{"byte": 1, "green": 1}, nil)
 if err != nil {
     // handle err
     return
@@ -136,7 +136,7 @@ Create a mock client for unit testing — no server required:
 client := sdk.Test()
 
 data, err := client.Data(nil).Load(
-    nil, nil,
+    map[string]any{"byte": 1, "green": 1}, nil,
 )
 if err != nil {
     panic(err)
@@ -292,12 +292,35 @@ Create an instance: `data := client.Data(nil)`
 #### Example: Load
 
 ```go
-data, err := client.Data(nil).Load(nil, nil)
+data, err := client.Data(nil).Load(map[string]any{"byte": 1, "green": 1}, nil)
 if err != nil {
     panic(err)
 }
 fmt.Println(data) // the loaded record
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -374,7 +397,7 @@ stores the returned data and match criteria internally.
 
 ```go
 data := client.Data(nil)
-data.Load(nil, nil)
+data.Load(map[string]any{"byte": 1, "green": 1}, nil)
 
 // data.Data() now returns the data data from the last load
 // data.Match() returns the last match criteria

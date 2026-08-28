@@ -36,7 +36,7 @@ local client = sdk.new()
 ### 3. Load a data
 
 ```lua
-local data, err = client:Data():load()
+local data, err = client:Data():load({ byte = 1, green = 1 })
 if err then error(err) end
 print(data)
 ```
@@ -48,7 +48,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local data, err = client:Data():load()
+local data, err = client:Data():load({ byte = 1, green = 1 })
 if err then error(err) end
 ```
 
@@ -106,7 +106,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Data():load()
+local result, err = client:Data():load({ byte = 1, green = 1 })
 -- result is the returned data; err is set on failure
 ```
 
@@ -259,8 +259,31 @@ Create an instance: `local data = client:Data(nil)`
 #### Example: Load
 
 ```lua
-local data, err = client:Data():load()
+local data, err = client:Data():load({ byte = 1, green = 1 })
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -340,7 +363,7 @@ stores the returned data and match criteria internally.
 
 ```lua
 local data = client:Data()
-data:load()
+data:load({ byte = 1, green = 1 })
 
 -- data:data_get() now returns the data data from the last load
 -- data:match_get() returns the last match criteria

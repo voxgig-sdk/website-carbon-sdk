@@ -12,8 +12,8 @@ export interface Data {
 }
 
 export interface DataLoadMatch {
-  adjustedBytes?: number
-  co2?: Record<string, any>
-  energy?: number
+  byte: number
+  green: number
+  legacy?: number
 }
 

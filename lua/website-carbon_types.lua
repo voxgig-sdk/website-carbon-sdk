@@ -12,9 +12,9 @@
 ---@field energy number
 
 ---@class DataLoadMatch
----@field adjustedBytes? number
----@field co2? table
----@field energy? number
+---@field byte number
+---@field green number
+---@field legacy? number
 
 local M = {}
 

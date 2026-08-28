@@ -39,7 +39,7 @@ const client = new WebsiteCarbonSDK()
 
 ```ts
 try {
-  const data = await client.Data().load()
+  const data = await client.Data().load({ byte: 1, green: 1 })
   console.log(data)
 } catch (err) {
   console.error('load failed:', err)
@@ -53,7 +53,7 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const data = await client.Data().load()
+  const data = await client.Data().load({ byte: 1, green: 1 })
   console.log(data)
 } catch (err) {
   console.error('load failed:', err)
@@ -120,7 +120,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = WebsiteCarbonSDK.test()
 
-const data = await client.Data().load()
+const data = await client.Data().load({ byte: 1, green: 1 })
 // data is the entity, populated with mock response data
 // — call data.data() for the record itself
 console.log(data)
@@ -141,7 +141,7 @@ Entity instances remember their last match and data:
 const entity = client.Data()
 
 // First call runs the operation and stores its result
-await entity.load()
+await entity.load({ byte: 1, green: 1 })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
@@ -319,8 +319,31 @@ Create an instance: `const data = client.Data()`
 #### Example: Load
 
 ```ts
-const data = await client.Data().load()
+const data = await client.Data().load({ byte: 1, green: 1 })
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -393,7 +416,7 @@ calls on the same instance can rely on this state.
 
 ```ts
 const data = client.Data()
-await data.load()
+await data.load({ byte: 1, green: 1 })
 
 // data.data() now returns the data data from the last `load`
 // data.match() returns the last match criteria

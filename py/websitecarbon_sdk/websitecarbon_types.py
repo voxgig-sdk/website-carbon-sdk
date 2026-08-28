@@ -22,7 +22,10 @@ class Data(TypedDict):
     energy: float
 
 
-class DataLoadMatch(TypedDict, total=False):
-    adjustedBytes: float
-    co2: dict
-    energy: float
+class DataLoadMatchRequired(TypedDict):
+    byte: int
+    green: int
+
+
+class DataLoadMatch(DataLoadMatchRequired, total=False):
+    legacy: int
