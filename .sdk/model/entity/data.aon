@@ -60,8 +60,10 @@ main: kit: entity: data: {
           }
           method: "GET"
           orig: "/data"
-          parts: [
-            "data"
+          segments: [
+            {
+              lit: "data"
+            }
           ]
           select: {
             exist: [

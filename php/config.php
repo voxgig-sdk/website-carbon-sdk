@@ -112,8 +112,10 @@ class WebsiteCarbonConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/data',
-                  'parts' => [
-                    'data',
+                  'segments' => [
+                    [
+                      'lit' => 'data',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -125,6 +127,9 @@ class WebsiteCarbonConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.statistics`',
+                  ],
+                  'parts' => [
+                    'data',
                   ],
                 ],
               ],
