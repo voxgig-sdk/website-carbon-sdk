@@ -105,7 +105,7 @@ local result, err = client:Data():load({ byte = 1, green = 1 })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/website-carbon` | publish pending — [install from git tag](https://github.com/voxgig-sdk/website-carbon-sdk/releases) |
+| TypeScript | `@voxgig-sdk/website-carbon-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/website-carbon-sdk/releases) |
 | Python | `voxgig-sdk-website-carbon` | publish pending — [install from git tag](https://github.com/voxgig-sdk/website-carbon-sdk/releases) |
 | PHP | `voxgig-sdk/website-carbon` | publish pending — [install from git tag](https://github.com/voxgig-sdk/website-carbon-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/website-carbon-sdk/go` | `go get github.com/voxgig-sdk/website-carbon-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:Data():load({ byte = 1, green = 1 })
 ### TypeScript
 
 ```ts
-import { WebsiteCarbonSDK } from '@voxgig-sdk/website-carbon'
+import { WebsiteCarbonSDK } from '@voxgig-sdk/website-carbon-sdk'
 
 const client = new WebsiteCarbonSDK()
 

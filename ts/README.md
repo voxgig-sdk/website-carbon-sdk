@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { WebsiteCarbonSDK } from '@voxgig-sdk/website-carbon'
+import { WebsiteCarbonSDK } from '@voxgig-sdk/website-carbon-sdk'
 
 const client = new WebsiteCarbonSDK()
 ```
@@ -405,7 +405,7 @@ website-carbon/
 Import the SDK from the package root:
 
 ```ts
-import { WebsiteCarbonSDK } from '@voxgig-sdk/website-carbon'
+import { WebsiteCarbonSDK } from '@voxgig-sdk/website-carbon-sdk'
 ```
 
 ### Entity state
