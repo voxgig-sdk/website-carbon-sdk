@@ -1,12 +1,18 @@
 # WebsiteCarbon SDK feature factory
 
 from websitecarbon_sdk.feature.base_feature import WebsiteCarbonBaseFeature
+from websitecarbon_sdk.feature.ratelimit_feature import WebsiteCarbonRatelimitFeature
+from websitecarbon_sdk.feature.retry_feature import WebsiteCarbonRetryFeature
 from websitecarbon_sdk.feature.test_feature import WebsiteCarbonTestFeature
+from websitecarbon_sdk.feature.timeout_feature import WebsiteCarbonTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: WebsiteCarbonBaseFeature(),
+    "ratelimit": lambda: WebsiteCarbonRatelimitFeature(),
+    "retry": lambda: WebsiteCarbonRetryFeature(),
     "test": lambda: WebsiteCarbonTestFeature(),
+    "timeout": lambda: WebsiteCarbonTimeoutFeature(),
 }
 
 
