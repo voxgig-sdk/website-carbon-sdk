@@ -105,12 +105,12 @@ local result, err = client:Data():load({ byte = 1, green = 1 })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/website-carbon-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/website-carbon-sdk/releases) |
-| Python | `voxgig-sdk-website-carbon` | publish pending — [install from git tag](https://github.com/voxgig-sdk/website-carbon-sdk/releases) |
-| PHP | `voxgig-sdk/website-carbon` | publish pending — [install from git tag](https://github.com/voxgig-sdk/website-carbon-sdk/releases) |
+| TypeScript | `@voxgig-sdk/website-carbon-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/website-carbon-sdk/tags) |
+| Python | `voxgig-sdk-website-carbon` | publish pending — [install from git tag](https://github.com/voxgig-sdk/website-carbon-sdk/tags) |
+| PHP | `voxgig-sdk/website-carbon` | publish pending — [install from git tag](https://github.com/voxgig-sdk/website-carbon-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/website-carbon-sdk/go` | `go get github.com/voxgig-sdk/website-carbon-sdk/go@latest` |
-| Ruby | `voxgig-sdk-website-carbon` | publish pending — [install from git tag](https://github.com/voxgig-sdk/website-carbon-sdk/releases) |
-| Lua | `voxgig-sdk-website-carbon` | publish pending — [install from git tag](https://github.com/voxgig-sdk/website-carbon-sdk/releases) |
+| Ruby | `voxgig-sdk-website-carbon` | publish pending — [install from git tag](https://github.com/voxgig-sdk/website-carbon-sdk/tags) |
+| Lua | `voxgig-sdk-website-carbon` | publish pending — [install from git tag](https://github.com/voxgig-sdk/website-carbon-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/website-carbon-sdk/go-cli` | `go install github.com/voxgig-sdk/website-carbon-sdk/go-cli/cmd/website-carbon@latest` |
 | Go MCP server | `github.com/voxgig-sdk/website-carbon-sdk/go-mcp` | `go get github.com/voxgig-sdk/website-carbon-sdk/go-mcp@latest` |
 
