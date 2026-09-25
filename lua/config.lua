@@ -87,21 +87,24 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "adjustedBytes",
+            ["title"] = "Adjusted Bytes",
+            ["type"] = "`$NUMBER`",
             ["req"] = true,
             ["short"] = "The data transfer of the page load adjusted to take returning visitor caching into account.",
-            ["type"] = "`$NUMBER`",
           },
           {
             ["name"] = "co2",
+            ["title"] = "Co2",
+            ["type"] = "`$OBJECT`",
             ["req"] = true,
             ["short"] = "Object containing data relating to CO2 emissions from each page load.",
-            ["type"] = "`$OBJECT`",
           },
           {
             ["name"] = "energy",
+            ["title"] = "Energy",
+            ["type"] = "`$NUMBER`",
             ["req"] = true,
             ["short"] = "The approximate amount of energy required for each page load in kWh",
-            ["type"] = "`$NUMBER`",
           },
         },
         ["name"] = "data",
@@ -111,32 +114,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["example"] = 12345678,
-                      ["kind"] = "query",
-                      ["name"] = "byte",
-                      ["orig"] = "byte",
-                      ["reqd"] = true,
-                      ["type"] = "`$INTEGER`",
-                    },
-                    {
-                      ["example"] = 1,
-                      ["kind"] = "query",
-                      ["name"] = "green",
-                      ["orig"] = "green",
-                      ["reqd"] = true,
-                      ["type"] = "`$INTEGER`",
-                    },
-                    {
-                      ["kind"] = "query",
-                      ["name"] = "legacy",
-                      ["orig"] = "legacy",
-                      ["type"] = "`$INTEGER`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/data",
@@ -145,19 +122,46 @@ local function make_config()
                     ["lit"] = "data",
                   },
                 },
+                ["parts"] = {
+                  "data",
+                },
+                ["rename"] = {},
+                ["transform"] = {
+                  ["req"] = "`reqdata`",
+                  ["res"] = "`body.statistics`",
+                },
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "byte",
+                      ["orig"] = "byte",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "query",
+                      ["reqd"] = true,
+                      ["example"] = 12345678,
+                    },
+                    {
+                      ["name"] = "green",
+                      ["orig"] = "green",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "query",
+                      ["reqd"] = true,
+                      ["example"] = 1,
+                    },
+                    {
+                      ["name"] = "legacy",
+                      ["orig"] = "legacy",
+                      ["type"] = "`$INTEGER`",
+                      ["kind"] = "query",
+                    },
+                  },
+                },
                 ["select"] = {
                   ["exist"] = {
                     "byte",
                     "green",
                     "legacy",
                   },
-                },
-                ["transform"] = {
-                  ["req"] = "`reqdata`",
-                  ["res"] = "`body.statistics`",
-                },
-                ["parts"] = {
-                  "data",
                 },
               },
             },

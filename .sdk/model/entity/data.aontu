@@ -1,0 +1,94 @@
+# Entity: data
+
+main: kit: entity: data: {
+
+  alias: field: {}
+
+  fields: {
+    adjustedBytes: {
+      h: "Adjusted Bytes"
+      n: "adjustedBytes"
+      r: true
+      sh: "The data transfer of the page load adjusted to take returning visitor caching into account."
+      t: "`$NUMBER`"
+    }
+    co2: {
+      h: "Co2"
+      n: "co2"
+      r: true
+      sh: "Object containing data relating to CO2 emissions from each page load."
+      t: "`$OBJECT`"
+    }
+    energy: {
+      h: "Energy"
+      n: "energy"
+      r: true
+      sh: "The approximate amount of energy required for each page load in kWh"
+      t: "`$NUMBER`"
+    }
+  }
+
+  name: "data"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /data"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 12345678
+                k: "query"
+                n: "byte"
+                or: "byte"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "green"
+                or: "green"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "legacy"
+                or: "legacy"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/data"
+          q: {
+            exist: [
+              "byte"
+              "green"
+              "legacy"
+            ]
+          }
+          s: [
+            {
+              lit: "data"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.statistics`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

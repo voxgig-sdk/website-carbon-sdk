@@ -91,21 +91,24 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "adjustedBytes",
+						"title": "Adjusted Bytes",
+						"type": "`$NUMBER`",
 						"req": true,
 						"short": "The data transfer of the page load adjusted to take returning visitor caching into account.",
-						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "co2",
+						"title": "Co2",
+						"type": "`$OBJECT`",
 						"req": true,
 						"short": "Object containing data relating to CO2 emissions from each page load.",
-						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "energy",
+						"title": "Energy",
+						"type": "`$NUMBER`",
 						"req": true,
 						"short": "The approximate amount of energy required for each page load in kWh",
-						"type": "`$NUMBER`",
 					},
 				},
 				"name": "data",
@@ -115,32 +118,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": 12345678,
-											"kind": "query",
-											"name": "byte",
-											"orig": "byte",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"example": 1,
-											"kind": "query",
-											"name": "green",
-											"orig": "green",
-											"reqd": true,
-											"type": "`$INTEGER`",
-										},
-										map[string]any{
-											"kind": "query",
-											"name": "legacy",
-											"orig": "legacy",
-											"type": "`$INTEGER`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/data",
@@ -149,19 +126,46 @@ func MakeConfig() map[string]any {
 										"lit": "data",
 									},
 								},
+								"parts": []any{
+									"data",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.statistics`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "byte",
+											"orig": "byte",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"reqd": true,
+											"example": 12345678,
+										},
+										map[string]any{
+											"name": "green",
+											"orig": "green",
+											"type": "`$INTEGER`",
+											"kind": "query",
+											"reqd": true,
+											"example": 1,
+										},
+										map[string]any{
+											"name": "legacy",
+											"orig": "legacy",
+											"type": "`$INTEGER`",
+											"kind": "query",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"byte",
 										"green",
 										"legacy",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.statistics`",
-								},
-								"parts": []any{
-									"data",
 								},
 							},
 						},
