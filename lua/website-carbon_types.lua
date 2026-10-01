@@ -7,9 +7,12 @@
 -- edit by hand.
 
 ---@class Data
----@field adjustedBytes number
----@field co2 table
----@field energy number
+---@field bytes number
+---@field cleanerThan number
+---@field gco2e number
+---@field green boolean
+---@field rating string
+---@field statistics table
 
 ---@class DataLoadMatch
 ---@field byte number

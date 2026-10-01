@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 WebsiteCarbonUtility.registrar = ->(u) {
   u.clean = WebsiteCarbonUtilities::Clean
+  u.clean_add = WebsiteCarbonUtilities::CleanAdd
+  u.clean_explain = WebsiteCarbonUtilities::CleanExplain
   u.done = WebsiteCarbonUtilities::Done
   u.make_error = WebsiteCarbonUtilities::MakeError
   u.feature_add = WebsiteCarbonUtilities::FeatureAdd

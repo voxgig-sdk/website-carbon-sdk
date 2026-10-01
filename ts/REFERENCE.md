@@ -116,9 +116,12 @@ const data = client.Data()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `adjustedBytes` | `number` | Yes | The data transfer of the page load adjusted to take returning visitor caching into account. |
-| `co2` | `Record<string, any>` | Yes | Object containing data relating to CO2 emissions from each page load. |
-| `energy` | `number` | Yes | The approximate amount of energy required for each page load in kWh |
+| `bytes` | `number` | Yes | Number of bytes you passed to the endpoint |
+| `cleanerThan` | `number` | Yes | A numeric value between 0 and 1 representing the percentage of pages that this result's emissions are lower than. |
+| `gco2e` | `number` | Yes | The emissions in grams of CO2 equivalent |
+| `green` | `boolean` | Yes | The green hosting flag you passed to the endpoint |
+| `rating` | `string` | Yes | The Digital Carbon Rating |
+| `statistics` | `Record<string, any>` | Yes | Statistics object containing detailed calculations. |
 
 ### Operations
 

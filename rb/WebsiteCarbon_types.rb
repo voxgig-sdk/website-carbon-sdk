@@ -10,18 +10,30 @@
 
 # Data entity data model.
 #
-# @!attribute [rw] adjustedBytes
+# @!attribute [rw] bytes
 #   @return [Float]
 #
-# @!attribute [rw] co2
+# @!attribute [rw] cleanerThan
+#   @return [Float]
+#
+# @!attribute [rw] gco2e
+#   @return [Float]
+#
+# @!attribute [rw] green
+#   @return [Boolean]
+#
+# @!attribute [rw] rating
+#   @return [String]
+#
+# @!attribute [rw] statistics
 #   @return [Hash]
-#
-# @!attribute [rw] energy
-#   @return [Float]
 DataType = Struct.new(
-  :adjustedBytes,
-  :co2,
-  :energy,
+  :bytes,
+  :cleanerThan,
+  :gco2e,
+  :green,
+  :rating,
+  :statistics,
   keyword_init: true
 )
 

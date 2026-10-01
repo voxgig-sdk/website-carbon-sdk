@@ -15,9 +15,12 @@ declare(strict_types=1);
 /** Data entity data model. */
 class Data
 {
-    public float $adjustedBytes;
-    public array $co2;
-    public float $energy;
+    public float $bytes;
+    public float $cleanerThan;
+    public float $gco2e;
+    public bool $green;
+    public string $rating;
+    public array $statistics;
 }
 
 /** Request payload for Data#load. */

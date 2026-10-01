@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 WebsiteCarbonUtility::setRegistrar(function (WebsiteCarbonUtility $u): void {
     $u->clean = [WebsiteCarbonClean::class, 'call'];
+    $u->clean_add = [WebsiteCarbonClean::class, 'add'];
+    $u->clean_explain = [WebsiteCarbonDone::class, 'clean_explain'];
     $u->done = [WebsiteCarbonDone::class, 'call'];
     $u->make_error = [WebsiteCarbonMakeError::class, 'call'];
     $u->feature_add = [WebsiteCarbonFeatureAdd::class, 'call'];

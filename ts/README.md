@@ -15,9 +15,13 @@ predictable and low-friction for both humans and AI agents.
 
 ## Install
 This package is not yet published to npm. Install it from the GitHub
-release tag (`ts/vX.Y.Z`):
+release tag (`ts/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/website-carbon-sdk/releases)), or from a
+clone, which carries the compiled `dist/`:
 
-- Releases: [https://github.com/voxgig-sdk/website-carbon-sdk/releases](https://github.com/voxgig-sdk/website-carbon-sdk/releases)
+```bash
+git clone https://github.com/voxgig-sdk/website-carbon-sdk
+npm install ./website-carbon-sdk/ts
+```
 
 
 ## Tutorial: your first API call
@@ -290,9 +294,12 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `adjustedBytes` | The data transfer of the page load adjusted to take returning visitor caching into account. |
-| `co2` | Object containing data relating to CO2 emissions from each page load. |
-| `energy` | The approximate amount of energy required for each page load in kWh |
+| `bytes` | Number of bytes you passed to the endpoint |
+| `cleanerThan` | A numeric value between 0 and 1 representing the percentage of pages that this result's emissions are lower than. |
+| `gco2e` | The emissions in grams of CO2 equivalent |
+| `green` | The green hosting flag you passed to the endpoint |
+| `rating` | The Digital Carbon Rating |
+| `statistics` | Statistics object containing detailed calculations. |
 
 Operations: load.
 
@@ -317,9 +324,12 @@ Create an instance: `const data = client.Data()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `adjustedBytes` | `number` | The data transfer of the page load adjusted to take returning visitor caching into account. |
-| `co2` | `Record<string, any>` | Object containing data relating to CO2 emissions from each page load. |
-| `energy` | `number` | The approximate amount of energy required for each page load in kWh |
+| `bytes` | `number` | Number of bytes you passed to the endpoint |
+| `cleanerThan` | `number` | A numeric value between 0 and 1 representing the percentage of pages that this result's emissions are lower than. |
+| `gco2e` | `number` | The emissions in grams of CO2 equivalent |
+| `green` | `boolean` | The green hosting flag you passed to the endpoint |
+| `rating` | `string` | The Digital Carbon Rating |
+| `statistics` | `Record<string, any>` | Statistics object containing detailed calculations. |
 
 #### Example: Load
 

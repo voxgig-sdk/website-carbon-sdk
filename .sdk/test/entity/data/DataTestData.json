@@ -2,21 +2,30 @@
   "existing": {
     "data": {
       "DATA00": {
-        "adjustedBytes": 30,
-        "co2": {},
-        "energy": 32,
+        "bytes": 60,
+        "cleanerThan": 61,
+        "gco2e": 62,
+        "green": false,
+        "rating": "s40",
+        "statistics": {},
         "id": "DATA00"
       },
       "DATA01": {
-        "adjustedBytes": 60,
-        "co2": {},
-        "energy": 62,
+        "bytes": 120,
+        "cleanerThan": 121,
+        "gco2e": 122,
+        "green": false,
+        "rating": "s7c",
+        "statistics": {},
         "id": "DATA01"
       },
       "DATA02": {
-        "adjustedBytes": 90,
-        "co2": {},
-        "energy": 92,
+        "bytes": 180,
+        "cleanerThan": 181,
+        "gco2e": 182,
+        "green": false,
+        "rating": "sb8",
+        "statistics": {},
         "id": "DATA02"
       }
     }
@@ -24,9 +33,12 @@
   "new": {
     "data": {
       "data_ref01": {
-        "adjustedBytes": 120,
-        "co2": {},
-        "energy": 122
+        "bytes": 240,
+        "cleanerThan": 241,
+        "gco2e": 242,
+        "green": false,
+        "rating": "sf4",
+        "statistics": {}
       }
     }
   },

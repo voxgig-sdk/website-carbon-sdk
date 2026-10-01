@@ -17,9 +17,12 @@ from typing import TypedDict, Any
 
 
 class Data(TypedDict):
-    adjustedBytes: float
-    co2: dict
-    energy: float
+    bytes: float
+    cleanerThan: float
+    gco2e: float
+    green: bool
+    rating: str
+    statistics: dict
 
 
 class DataLoadMatchRequired(TypedDict):

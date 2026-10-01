@@ -97,29 +97,53 @@
             "field": {}
           },
           "fields": {
-            "adjustedBytes": {
+            "bytes": {
               "a": true,
-              "h": "Adjusted Bytes",
-              "n": "adjustedBytes",
+              "h": "Bytes",
+              "n": "bytes",
               "r": true,
-              "sh": "The data transfer of the page load adjusted to take returning visitor caching into account.",
+              "sh": "Number of bytes you passed to the endpoint",
               "t": "`$NUMBER`"
             },
-            "co2": {
+            "cleanerThan": {
               "a": true,
-              "h": "Co2",
-              "n": "co2",
+              "h": "Cleaner Than",
+              "n": "cleanerThan",
               "r": true,
-              "sh": "Object containing data relating to CO2 emissions from each page load.",
+              "sh": "A numeric value between 0 and 1 representing the percentage of pages that this result's emissions are lower than.",
+              "t": "`$NUMBER`"
+            },
+            "gco2e": {
+              "a": true,
+              "h": "Gco2e",
+              "n": "gco2e",
+              "r": true,
+              "sh": "The emissions in grams of CO2 equivalent",
+              "t": "`$NUMBER`"
+            },
+            "green": {
+              "a": true,
+              "h": "Green",
+              "n": "green",
+              "r": true,
+              "sh": "The green hosting flag you passed to the endpoint",
+              "t": "`$BOOLEAN`"
+            },
+            "rating": {
+              "a": true,
+              "h": "Rating",
+              "n": "rating",
+              "r": true,
+              "sh": "The Digital Carbon Rating",
+              "t": "`$STRING`"
+            },
+            "statistics": {
+              "a": true,
+              "h": "Statistics",
+              "n": "statistics",
+              "r": true,
+              "sh": "Statistics object containing detailed calculations.",
               "t": "`$OBJECT`"
-            },
-            "energy": {
-              "a": true,
-              "h": "Energy",
-              "n": "energy",
-              "r": true,
-              "sh": "The approximate amount of energy required for each page load in kWh",
-              "t": "`$NUMBER`"
             }
           },
           "name": "data",
@@ -142,7 +166,7 @@
                         "ex": 12345678,
                         "k": "query",
                         "n": "byte",
-                        "or": "byte",
+                        "or": "bytes",
                         "r": true,
                         "t": "`$INTEGER`"
                       },
@@ -183,7 +207,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body.statistics`"
+                    "res": "`body`"
                   }
                 }
               ]
@@ -672,7 +696,12 @@
         },
         "base": "http://localhost:8000",
         "clean": {
-          "keys": "key,token,id"
+          "active": true,
+          "hint": "0",
+          "keys": "key,secret,token,password,passwd,authorization,cookie,credential,signature",
+          "mask": "[redacted]",
+          "min": "4",
+          "values": ""
         },
         "entity": {
           "`$CHILD`": {

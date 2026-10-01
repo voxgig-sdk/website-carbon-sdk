@@ -87,9 +87,12 @@ data = client.Data()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `adjustedBytes` | `float` | Yes | The data transfer of the page load adjusted to take returning visitor caching into account. |
-| `co2` | `dict` | Yes | Object containing data relating to CO2 emissions from each page load. |
-| `energy` | `float` | Yes | The approximate amount of energy required for each page load in kWh |
+| `bytes` | `float` | Yes | Number of bytes you passed to the endpoint |
+| `cleanerThan` | `float` | Yes | A numeric value between 0 and 1 representing the percentage of pages that this result's emissions are lower than. |
+| `gco2e` | `float` | Yes | The emissions in grams of CO2 equivalent |
+| `green` | `bool` | Yes | The green hosting flag you passed to the endpoint |
+| `rating` | `str` | Yes | The Digital Carbon Rating |
+| `statistics` | `dict` | Yes | Statistics object containing detailed calculations. |
 
 ### Operations
 

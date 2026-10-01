@@ -98,25 +98,46 @@ module WebsiteCarbonConfig
         "data" => {
           "fields" => [
             {
-              "name" => "adjustedBytes",
-              "title" => "Adjusted Bytes",
+              "name" => "bytes",
+              "title" => "Bytes",
               "type" => "`$NUMBER`",
               "req" => true,
-              "short" => "The data transfer of the page load adjusted to take returning visitor caching into account.",
+              "short" => "Number of bytes you passed to the endpoint",
             },
             {
-              "name" => "co2",
-              "title" => "Co2",
+              "name" => "cleanerThan",
+              "title" => "Cleaner Than",
+              "type" => "`$NUMBER`",
+              "req" => true,
+              "short" => "A numeric value between 0 and 1 representing the percentage of pages that this result's emissions are lower than.",
+            },
+            {
+              "name" => "gco2e",
+              "title" => "Gco2e",
+              "type" => "`$NUMBER`",
+              "req" => true,
+              "short" => "The emissions in grams of CO2 equivalent",
+            },
+            {
+              "name" => "green",
+              "title" => "Green",
+              "type" => "`$BOOLEAN`",
+              "req" => true,
+              "short" => "The green hosting flag you passed to the endpoint",
+            },
+            {
+              "name" => "rating",
+              "title" => "Rating",
+              "type" => "`$STRING`",
+              "req" => true,
+              "short" => "The Digital Carbon Rating",
+            },
+            {
+              "name" => "statistics",
+              "title" => "Statistics",
               "type" => "`$OBJECT`",
               "req" => true,
-              "short" => "Object containing data relating to CO2 emissions from each page load.",
-            },
-            {
-              "name" => "energy",
-              "title" => "Energy",
-              "type" => "`$NUMBER`",
-              "req" => true,
-              "short" => "The approximate amount of energy required for each page load in kWh",
+              "short" => "Statistics object containing detailed calculations.",
             },
           ],
           "name" => "data",
@@ -140,13 +161,13 @@ module WebsiteCarbonConfig
                   "rename" => {},
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body.statistics`",
+                    "res" => "`body`",
                   },
                   "args" => {
                     "query" => [
                       {
                         "name" => "byte",
-                        "orig" => "byte",
+                        "orig" => "bytes",
                         "type" => "`$INTEGER`",
                         "kind" => "query",
                         "reqd" => true,

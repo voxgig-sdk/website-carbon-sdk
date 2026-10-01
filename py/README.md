@@ -241,9 +241,12 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `adjustedBytes` | The data transfer of the page load adjusted to take returning visitor caching into account. |
-| `co2` | Object containing data relating to CO2 emissions from each page load. |
-| `energy` | The approximate amount of energy required for each page load in kWh |
+| `bytes` | Number of bytes you passed to the endpoint |
+| `cleanerThan` | A numeric value between 0 and 1 representing the percentage of pages that this result's emissions are lower than. |
+| `gco2e` | The emissions in grams of CO2 equivalent |
+| `green` | The green hosting flag you passed to the endpoint |
+| `rating` | The Digital Carbon Rating |
+| `statistics` | Statistics object containing detailed calculations. |
 
 Operations: Load.
 
@@ -268,9 +271,12 @@ Create an instance: `data = client.Data()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `adjustedBytes` | `float` | The data transfer of the page load adjusted to take returning visitor caching into account. |
-| `co2` | `dict` | Object containing data relating to CO2 emissions from each page load. |
-| `energy` | `float` | The approximate amount of energy required for each page load in kWh |
+| `bytes` | `float` | Number of bytes you passed to the endpoint |
+| `cleanerThan` | `float` | A numeric value between 0 and 1 representing the percentage of pages that this result's emissions are lower than. |
+| `gco2e` | `float` | The emissions in grams of CO2 equivalent |
+| `green` | `bool` | The green hosting flag you passed to the endpoint |
+| `rating` | `str` | The Digital Carbon Rating |
+| `statistics` | `dict` | Statistics object containing detailed calculations. |
 
 #### Example: Load
 

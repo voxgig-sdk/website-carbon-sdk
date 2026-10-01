@@ -12,9 +12,18 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `c
 
 ## Install
 This package is not yet published to RubyGems. Install it from the
-GitHub release tag (`rb/vX.Y.Z`):
+GitHub release tag (`rb/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/website-carbon-sdk/releases)), or
+from a clone:
 
-- Releases: [https://github.com/voxgig-sdk/website-carbon-sdk/releases](https://github.com/voxgig-sdk/website-carbon-sdk/releases)
+```bash
+git clone https://github.com/voxgig-sdk/website-carbon-sdk
+```
+
+Then add it to your `Gemfile` by path, and run `bundle install`:
+
+```ruby
+gem "voxgig-sdk-website-carbon-sdk", path: "./website-carbon-sdk/rb"
+```
 
 
 ## Tutorial: your first API call
@@ -235,9 +244,12 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `adjustedBytes` | The data transfer of the page load adjusted to take returning visitor caching into account. |
-| `co2` | Object containing data relating to CO2 emissions from each page load. |
-| `energy` | The approximate amount of energy required for each page load in kWh |
+| `bytes` | Number of bytes you passed to the endpoint |
+| `cleanerThan` | A numeric value between 0 and 1 representing the percentage of pages that this result's emissions are lower than. |
+| `gco2e` | The emissions in grams of CO2 equivalent |
+| `green` | The green hosting flag you passed to the endpoint |
+| `rating` | The Digital Carbon Rating |
+| `statistics` | Statistics object containing detailed calculations. |
 
 Operations: Load.
 
@@ -262,9 +274,12 @@ Create an instance: `data = client.Data`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `adjustedBytes` | `Float` | The data transfer of the page load adjusted to take returning visitor caching into account. |
-| `co2` | `Hash` | Object containing data relating to CO2 emissions from each page load. |
-| `energy` | `Float` | The approximate amount of energy required for each page load in kWh |
+| `bytes` | `Float` | Number of bytes you passed to the endpoint |
+| `cleanerThan` | `Float` | A numeric value between 0 and 1 representing the percentage of pages that this result's emissions are lower than. |
+| `gco2e` | `Float` | The emissions in grams of CO2 equivalent |
+| `green` | `Boolean` | The green hosting flag you passed to the endpoint |
+| `rating` | `String` | The Digital Carbon Rating |
+| `statistics` | `Hash` | Statistics object containing detailed calculations. |
 
 #### Example: Load
 

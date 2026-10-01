@@ -20,9 +20,11 @@ SDK operations: `load`.
 
 Key fields to recognise:
 
-- `adjustedBytes`: The data transfer of the page load adjusted to take returning visitor caching into account. Note that all calculated emissions (gCO2e values) have factored in returning visitor caching
-- `co2`: Object containing data relating to CO2 emissions from each page load. Provides both renewable and grid scenarios for reference. The top level emissions have been calculated based on the green hosting status
-- `energy`: The approximate amount of energy required for each page load in kWh
+- `bytes`: Number of bytes you passed to the endpoint
+- `cleanerThan`: A numeric value between 0 and 1 representing the percentage of pages that this result&#39;s emissions are lower than. This is in comparison to average transfer size of pages from HTTP Archive
+- `gco2e`: The emissions in grams of CO2 equivalent
+- `green`: The green hosting flag you passed to the endpoint
+- `rating`: The Digital Carbon Rating
 
 ### Route map
 

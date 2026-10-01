@@ -5,26 +5,47 @@ main: kit: entity: data: {
   alias: field: {}
 
   fields: {
-    adjustedBytes: {
-      h: "Adjusted Bytes"
-      n: "adjustedBytes"
+    bytes: {
+      h: "Bytes"
+      n: "bytes"
       r: true
-      sh: "The data transfer of the page load adjusted to take returning visitor caching into account."
+      sh: "Number of bytes you passed to the endpoint"
       t: "`$NUMBER`"
     }
-    co2: {
-      h: "Co2"
-      n: "co2"
+    cleanerThan: {
+      h: "Cleaner Than"
+      n: "cleanerThan"
       r: true
-      sh: "Object containing data relating to CO2 emissions from each page load."
+      sh: "A numeric value between 0 and 1 representing the percentage of pages that this result's emissions are lower than."
+      t: "`$NUMBER`"
+    }
+    gco2e: {
+      h: "Gco2e"
+      n: "gco2e"
+      r: true
+      sh: "The emissions in grams of CO2 equivalent"
+      t: "`$NUMBER`"
+    }
+    green: {
+      h: "Green"
+      n: "green"
+      r: true
+      sh: "The green hosting flag you passed to the endpoint"
+      t: "`$BOOLEAN`"
+    }
+    rating: {
+      h: "Rating"
+      n: "rating"
+      r: true
+      sh: "The Digital Carbon Rating"
+      t: "`$STRING`"
+    }
+    statistics: {
+      h: "Statistics"
+      n: "statistics"
+      r: true
+      sh: "Statistics object containing detailed calculations."
       t: "`$OBJECT`"
-    }
-    energy: {
-      h: "Energy"
-      n: "energy"
-      r: true
-      sh: "The approximate amount of energy required for each page load in kWh"
-      t: "`$NUMBER`"
     }
   }
 
@@ -45,7 +66,7 @@ main: kit: entity: data: {
                 ex: 12345678
                 k: "query"
                 n: "byte"
-                or: "byte"
+                or: "bytes"
                 r: true
                 t: "`$INTEGER`"
               }
@@ -82,7 +103,7 @@ main: kit: entity: data: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body.statistics`"
+            res: "`body`"
           }
         }
       ]
