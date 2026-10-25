@@ -93,6 +93,7 @@ class WebsiteCarbonConfig
           ],
           'optspec' => [
             'clearTimer' => '`$FUNCTION`',
+            'now' => '`$FUNCTION`',
             'setTimer' => '`$FUNCTION`',
           ],
           'strict' => false,
@@ -194,6 +195,7 @@ class WebsiteCarbonConfig
                         'kind' => 'query',
                         'reqd' => true,
                         'example' => 1,
+                        'field' => true,
                       ],
                       [
                         'name' => 'legacy',
@@ -207,8 +209,11 @@ class WebsiteCarbonConfig
                     'exist' => [
                       'byte',
                       'green',
-                      'legacy',
                     ],
+                  ],
+                  'response' => [
+                    'kind' => 'json',
+                    'media' => 'application/json',
                   ],
                 ],
               ],

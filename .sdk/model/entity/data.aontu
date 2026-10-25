@@ -93,8 +93,11 @@ main: kit: entity: data: {
             exist: [
               "byte"
               "green"
-              "legacy"
             ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
           }
           s: [
             {

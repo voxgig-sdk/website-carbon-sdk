@@ -96,6 +96,7 @@ def make_config():
         },
         "optspec": {
           "clearTimer": "`$FUNCTION`",
+          "now": "`$FUNCTION`",
           "setTimer": "`$FUNCTION`",
         },
         "strict": False,
@@ -197,6 +198,7 @@ def make_config():
                       "kind": "query",
                       "reqd": True,
                       "example": 1,
+                      "field": True,
                     },
                     {
                       "name": "legacy",
@@ -210,8 +212,11 @@ def make_config():
                   "exist": [
                     "byte",
                     "green",
-                    "legacy",
                   ],
+                },
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
                 },
               },
             ],

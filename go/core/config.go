@@ -71,6 +71,7 @@ func MakeConfig() map[string]any {
 				},
 				"optspec": map[string]any{
 					"clearTimer": "`$FUNCTION`",
+					"now": "`$FUNCTION`",
 					"setTimer": "`$FUNCTION`",
 				},
 				"strict": false,
@@ -172,6 +173,7 @@ func MakeConfig() map[string]any {
 											"kind": "query",
 											"reqd": true,
 											"example": 1,
+											"field": true,
 										},
 										map[string]any{
 											"name": "legacy",
@@ -185,8 +187,11 @@ func MakeConfig() map[string]any {
 									"exist": []any{
 										"byte",
 										"green",
-										"legacy",
 									},
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},

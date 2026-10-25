@@ -3,5 +3,17 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "A numeric value between 0 and 1 representing the percentage of pages that this result&#39;s emissions are lower than. This is in comparison to average transfer size of pages from HTTP Archive",
+      "Calculates website carbon emissions per page view using real-time tests. Provides endpoints for testing and manual calculations to increase awareness and understanding of sustainability on the web.",
+      "Number of bytes you passed to the endpoint",
+      "Production server",
+      "Successful response with carbon emissions calculation",
+      "The Digital Carbon Rating",
+      "The emissions in grams of CO2 equivalent",
+      "The green hosting flag you passed to the endpoint"
+    ]
+  }
 }

@@ -102,6 +102,7 @@ class Config {
       },
       "optspec": {
         "clearTimer": "`$FUNCTION`",
+        "now": "`$FUNCTION`",
         "setTimer": "`$FUNCTION`"
       },
       "strict": false,
@@ -212,7 +213,8 @@ class Config {
                     "type": "`$INTEGER`",
                     "kind": "query",
                     "reqd": true,
-                    "example": 1
+                    "example": 1,
+                    "field": true
                   },
                   {
                     "name": "legacy",
@@ -225,9 +227,12 @@ class Config {
               "select": {
                 "exist": [
                   "byte",
-                  "green",
-                  "legacy"
+                  "green"
                 ]
+              },
+              "response": {
+                "kind": "json",
+                "media": "application/json"
               }
             }
           ]

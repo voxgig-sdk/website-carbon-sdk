@@ -21,10 +21,28 @@ const PLAN: any[] = [
       "legacy": "v1"
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [
       "bytes",
       "green",
       "legacy"
+    ],
+    "queryArgs": [
+      {
+        "name": "byte",
+        "wire": "bytes"
+      },
+      {
+        "name": "green",
+        "wire": "green"
+      },
+      {
+        "name": "legacy",
+        "wire": "legacy"
+      }
     ],
     "auth": null,
     "status": 200,
